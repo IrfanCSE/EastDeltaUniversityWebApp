@@ -1,6 +1,8 @@
+using System.Data.Entity;
+using EastDeltaUniversity.Models;
 using Microsoft.AspNet.Identity.EntityFramework;
 
-namespace EastDeltaUniversity.Models
+namespace EastDeltaUniversity.Context
 {
     public class AppDbContext : IdentityDbContext<AppUser>
     {
@@ -13,5 +15,7 @@ namespace EastDeltaUniversity.Models
         {
             return new AppDbContext();
         }
+
+        public DbSet<Department> Departments { get; set; }
     }
 }
