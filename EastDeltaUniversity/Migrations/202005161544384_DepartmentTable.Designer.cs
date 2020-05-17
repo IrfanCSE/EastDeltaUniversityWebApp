@@ -7,13 +7,13 @@ namespace EastDeltaUniversity.Migrations
     using System.Resources;
     
     [GeneratedCode("EntityFramework.Migrations", "6.4.4")]
-    public sealed partial class Initialize : IMigrationMetadata
+    public sealed partial class DepartmentTable : IMigrationMetadata
     {
-        private readonly ResourceManager Resources = new ResourceManager(typeof(Initialize));
+        private readonly ResourceManager Resources = new ResourceManager(typeof(DepartmentTable));
         
         string IMigrationMetadata.Id
         {
-            get { return "202005160842149_Initialize"; }
+            get { return "202005161544384_DepartmentTable"; }
         }
         
         string IMigrationMetadata.Source

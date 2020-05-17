@@ -168,15 +168,24 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\202005160842149_Initialize.cs" />
-    <Compile Include="Migrations\202005160842149_Initialize.designer.cs">
-      <DependentUpon>202005160842149_Initialize.cs</DependentUpon>
+    <Compile Include="Migrations\202005161440317_initialize.cs" />
+    <Compile Include="Migrations\202005161440317_initialize.designer.cs">
+      <DependentUpon>202005161440317_initialize.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202005161544384_DepartmentTable.cs" />
+    <Compile Include="Migrations\202005161544384_DepartmentTable.designer.cs">
+      <DependentUpon>202005161544384_DepartmentTable.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202005161548515_ConfigDepartment.cs" />
+    <Compile Include="Migrations\202005161548515_ConfigDepartment.designer.cs">
+      <DependentUpon>202005161548515_ConfigDepartment.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
-    <Compile Include="Context\AppDbContext.cs" />
+    <Compile Include="Context\ApplicationDbContext.cs" />
+    <Compile Include="Models\Configuration\DepartmentConfig.cs" />
     <Compile Include="Models\Department.cs" />
-    <Compile Include="Models\AppUser.cs" />
+    <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
@@ -202,9 +211,7 @@
     <Content Include="Scripts\respond.js" />
     <Content Include="Scripts\respond.min.js" />
     <Content Include="Scripts\_references.js" />
-    <Content Include="Web.config">
-      <SubType>Designer</SubType>
-    </Content>
+    <Content Include="Web.config" />
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </Content>
@@ -251,8 +258,14 @@
     <None Include="Project_Readme.html" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\202005160842149_Initialize.resx">
-      <DependentUpon>202005160842149_Initialize.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\202005161440317_initialize.resx">
+      <DependentUpon>202005161440317_initialize.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202005161544384_DepartmentTable.resx">
+      <DependentUpon>202005161544384_DepartmentTable.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202005161548515_ConfigDepartment.resx">
+      <DependentUpon>202005161548515_ConfigDepartment.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
