@@ -13,7 +13,7 @@ namespace EastDeltaUniversity.Migrations
         
         string IMigrationMetadata.Id
         {
-            get { return "202005161548515_ConfigDepartment"; }
+            get { return "202005180939461_ConfigDepartment"; }
         }
         
         string IMigrationMetadata.Source

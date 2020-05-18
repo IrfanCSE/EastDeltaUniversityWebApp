@@ -176,9 +176,9 @@
     <Compile Include="Migrations\202005161544384_DepartmentTable.designer.cs">
       <DependentUpon>202005161544384_DepartmentTable.cs</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\202005161548515_ConfigDepartment.cs" />
-    <Compile Include="Migrations\202005161548515_ConfigDepartment.designer.cs">
-      <DependentUpon>202005161548515_ConfigDepartment.cs</DependentUpon>
+    <Compile Include="Migrations\202005180939461_ConfigDepartment.cs" />
+    <Compile Include="Migrations\202005180939461_ConfigDepartment.designer.cs">
+      <DependentUpon>202005180939461_ConfigDepartment.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
@@ -264,8 +264,8 @@
     <EmbeddedResource Include="Migrations\202005161544384_DepartmentTable.resx">
       <DependentUpon>202005161544384_DepartmentTable.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202005161548515_ConfigDepartment.resx">
-      <DependentUpon>202005161548515_ConfigDepartment.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\202005180939461_ConfigDepartment.resx">
+      <DependentUpon>202005180939461_ConfigDepartment.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
