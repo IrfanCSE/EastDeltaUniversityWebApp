@@ -6,7 +6,7 @@ using System.Web;
 
 namespace EastDeltaUniversity.Models.Configuration
 {
-    public class DepartmentConfig:EntityTypeConfiguration<Department>
+    public class DepartmentConfig : EntityTypeConfiguration<Department>
     {
         public DepartmentConfig()
         {
@@ -17,10 +17,17 @@ namespace EastDeltaUniversity.Models.Configuration
                 .HasMaxLength(10)
                 .IsRequired();
 
+            HasIndex(x => x.Code)
+                .IsUnique();
+
             Property(x => x.Name)
                 .HasColumnType("varchar")
                 .HasMaxLength(50)
                 .IsRequired();
+
+            HasIndex(x => x.Name)
+                .IsUnique();
+
         }
     }
 }

@@ -163,6 +163,7 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="Controllers\AccountController.cs" />
+    <Compile Include="Controllers\DepartmentsController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Global.asax.cs">
@@ -179,6 +180,10 @@
     <Compile Include="Migrations\202005180939461_ConfigDepartment.cs" />
     <Compile Include="Migrations\202005180939461_ConfigDepartment.designer.cs">
       <DependentUpon>202005180939461_ConfigDepartment.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202005181626389_SetIndexOnDepartment.cs" />
+    <Compile Include="Migrations\202005181626389_SetIndexOnDepartment.designer.cs">
+      <DependentUpon>202005181626389_SetIndexOnDepartment.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
@@ -246,9 +251,12 @@
     <Content Include="Views\Manage\VerifyPhoneNumber.cshtml" />
     <Content Include="Views\Shared\Lockout.cshtml" />
     <Content Include="Views\Shared\_LoginPartial.cshtml" />
+    <Content Include="Views\Departments\Create.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Gateway\" />
+    <Folder Include="Manager\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff" />
@@ -266,6 +274,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202005180939461_ConfigDepartment.resx">
       <DependentUpon>202005180939461_ConfigDepartment.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202005181626389_SetIndexOnDepartment.resx">
+      <DependentUpon>202005181626389_SetIndexOnDepartment.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
