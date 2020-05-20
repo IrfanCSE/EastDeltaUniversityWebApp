@@ -19,7 +19,6 @@ namespace EastDeltaUniversity.Context
 
         public DbSet<Department> Departments { get; set; }
 
-        
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
             modelBuilder.Configurations.Add(new DepartmentConfig());

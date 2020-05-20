@@ -4,6 +4,7 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using EastDeltaUniversity.Context;
+using EastDeltaUniversity.Manager;
 using EastDeltaUniversity.Models;
 
 namespace EastDeltaUniversity.Controllers
@@ -11,15 +12,19 @@ namespace EastDeltaUniversity.Controllers
     public class DepartmentsController : Controller
     {
         private ApplicationDbContext _context;
+        private DepartmentManager _departmentManager;
         public DepartmentsController()
         {
+            _departmentManager = new DepartmentManager();
             _context= new ApplicationDbContext();
         }
 
-        //public ActionResult Index()
-        //{
-        //    return View();
-        //}
+        [HttpGet]
+        public ActionResult Index()
+        {
+            var department=_departmentManager.GetDepartmentList();
+            return View(department);
+        }
 
         [HttpGet]
         public ActionResult Create()
@@ -35,10 +40,44 @@ namespace EastDeltaUniversity.Controllers
             {
                 return View("Create", department);
             }
-            _context.Departments.Add(department);
-            _context.SaveChanges();
+            _departmentManager.Save(department);
             TempData["message"] = "Saved";
             return RedirectToAction("Create");
+        }
+
+        [HttpGet]
+        public ActionResult Details(int id)
+        {
+            var department = _departmentManager.GetDepartment(id);
+            return View(department);
+        }
+
+        [HttpGet]
+        public ActionResult Edit(int id)
+        {
+            var department = _departmentManager.GetDepartment(id);
+            return View(department);
+        }
+
+        [HttpPost]
+        public ActionResult Update(Department department)
+        {
+            _departmentManager.Update(department);
+            return RedirectToAction("Index");
+        }
+
+        [HttpGet]
+        public ActionResult Delete(int id)
+        {
+            var department = _departmentManager.GetDepartment(id);
+            return View(department);
+        }
+        
+        [HttpPost]
+        public ActionResult Delete(Department department)
+        {
+            _departmentManager.Delete(department.Id);
+            return RedirectToAction("Index");
         }
     }
 }

@@ -19,6 +19,9 @@ namespace EastDeltaUniversity.Models
 
         [Required]
         public string Name { get; set; }
+
+        [NotMapped]
+        public bool EditMode { get; set; }
     }
 
     public partial class Department:IValidatableObject
@@ -26,6 +29,12 @@ namespace EastDeltaUniversity.Models
         public IEnumerable<ValidationResult> Validate(ValidationContext validationContext)
         {
             List<ValidationResult> results = new List<ValidationResult>();
+
+            if (EditMode)
+            {
+                return results;
+            }
+
             ApplicationDbContext _context = new ApplicationDbContext();
             var code = _context.Departments.FirstOrDefault(x => x.Code == Code.ToUpper());
             var name = _context.Departments.FirstOrDefault(x=>x.Name==Name.ToUpper());
