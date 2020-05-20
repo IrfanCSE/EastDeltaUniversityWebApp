@@ -20,6 +20,8 @@ namespace EastDeltaUniversity.Models
         [Required]
         public string Name { get; set; }
 
+        public ICollection<Course> Courses { get; set; }
+
         [NotMapped]
         public bool EditMode { get; set; }
     }

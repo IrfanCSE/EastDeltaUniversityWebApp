@@ -199,11 +199,17 @@
     <Compile Include="Migrations\202005201404035_DataOfSemester.designer.cs">
       <DependentUpon>202005201404035_DataOfSemester.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202005201453344_AddCourseTableWithConfig.cs" />
+    <Compile Include="Migrations\202005201453344_AddCourseTableWithConfig.designer.cs">
+      <DependentUpon>202005201453344_AddCourseTableWithConfig.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Context\ApplicationDbContext.cs" />
+    <Compile Include="Models\Configuration\CourseConfig.cs" />
     <Compile Include="Models\Configuration\DepartmentConfig.cs" />
     <Compile Include="Models\Configuration\SemesterConfig.cs" />
+    <Compile Include="Models\Course.cs" />
     <Compile Include="Models\Department.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
@@ -304,6 +310,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202005201404035_DataOfSemester.resx">
       <DependentUpon>202005201404035_DataOfSemester.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202005201453344_AddCourseTableWithConfig.resx">
+      <DependentUpon>202005201453344_AddCourseTableWithConfig.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
