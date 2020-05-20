@@ -187,13 +187,27 @@
     <Compile Include="Migrations\202005181626389_SetIndexOnDepartment.designer.cs">
       <DependentUpon>202005181626389_SetIndexOnDepartment.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202005201337394_AddSemesterTable.cs" />
+    <Compile Include="Migrations\202005201337394_AddSemesterTable.designer.cs">
+      <DependentUpon>202005201337394_AddSemesterTable.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202005201401205_AddSemesterTable1.cs" />
+    <Compile Include="Migrations\202005201401205_AddSemesterTable1.designer.cs">
+      <DependentUpon>202005201401205_AddSemesterTable1.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202005201404035_DataOfSemester.cs" />
+    <Compile Include="Migrations\202005201404035_DataOfSemester.designer.cs">
+      <DependentUpon>202005201404035_DataOfSemester.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Context\ApplicationDbContext.cs" />
     <Compile Include="Models\Configuration\DepartmentConfig.cs" />
+    <Compile Include="Models\Configuration\SemesterConfig.cs" />
     <Compile Include="Models\Department.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
+    <Compile Include="Models\Semester.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
   </ItemGroup>
@@ -281,6 +295,15 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202005181626389_SetIndexOnDepartment.resx">
       <DependentUpon>202005181626389_SetIndexOnDepartment.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202005201337394_AddSemesterTable.resx">
+      <DependentUpon>202005201337394_AddSemesterTable.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202005201401205_AddSemesterTable1.resx">
+      <DependentUpon>202005201401205_AddSemesterTable1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202005201404035_DataOfSemester.resx">
+      <DependentUpon>202005201404035_DataOfSemester.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

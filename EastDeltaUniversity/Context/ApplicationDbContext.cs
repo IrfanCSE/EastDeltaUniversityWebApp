@@ -18,10 +18,12 @@ namespace EastDeltaUniversity.Context
         }
 
         public DbSet<Department> Departments { get; set; }
+        public DbSet<Semester> Semesters { get; set; }
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
             modelBuilder.Configurations.Add(new DepartmentConfig());
+            modelBuilder.Configurations.Add(new SemesterConfig());
 
             base.OnModelCreating(modelBuilder);
         }
