@@ -163,13 +163,16 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="Controllers\AccountController.cs" />
+    <Compile Include="Controllers\CourseController.cs" />
     <Compile Include="Controllers\DepartmentsController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
+    <Compile Include="Gateway\CourseGateway.cs" />
     <Compile Include="Gateway\DepartmentGateway.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Manager\CourseManager.cs" />
     <Compile Include="Manager\DepartmentManager.cs" />
     <Compile Include="Migrations\202005161440317_initialize.cs" />
     <Compile Include="Migrations\202005161440317_initialize.designer.cs">
@@ -278,6 +281,7 @@
     <Content Include="Views\Departments\Details.cshtml" />
     <Content Include="Views\Departments\Edit.cshtml" />
     <Content Include="Views\Departments\Delete.cshtml" />
+    <Content Include="Views\Course\Create.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

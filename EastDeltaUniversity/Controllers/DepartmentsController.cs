@@ -79,5 +79,10 @@ namespace EastDeltaUniversity.Controllers
             _departmentManager.Delete(department.Id);
             return RedirectToAction("Index");
         }
+
+        protected override void Dispose(bool disposing)
+        {
+            _context.Dispose();
+        }
     }
 }
