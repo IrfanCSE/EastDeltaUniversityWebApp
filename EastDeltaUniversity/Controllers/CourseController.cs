@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
-using System.Web.Mvc;
+﻿using System.Web.Mvc;
 using EastDeltaUniversity.Manager;
 using EastDeltaUniversity.Models;
 
@@ -39,6 +35,8 @@ namespace EastDeltaUniversity.Controllers
         {
             if (!ModelState.IsValid)
             {
+                ViewBag.DepartmentId = _departmentManager.GetDepartmentList();
+                ViewBag.SemesterId = _courseManager.GetSemesters();
                 return View("Create", course);
             }
             TempData["message"]=_courseManager.Save(course);

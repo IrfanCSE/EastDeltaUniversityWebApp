@@ -42,13 +42,15 @@ namespace EastDeltaUniversity.Models
             List<ValidationResult> results = new List<ValidationResult>();
             ApplicationDbContext _context = new ApplicationDbContext();
 
-            var code = _context.Courses.FirstOrDefault(x => x.Code == Code.ToUpper());
+            Code = Code.ToUpper();
+            var code = _context.Courses.FirstOrDefault(x => x.Code == Code);
             if (code != null)
             {
                 results.Add(new ValidationResult("Duplicate Code",new[] {"Code"}));
             }
 
-            var name = _context.Courses.FirstOrDefault(x => x.Name == Name.ToUpper());
+            Name = Name.ToUpper();
+            var name = _context.Courses.FirstOrDefault(x => x.Name == Name);
             if (name != null)
             {
                 results.Add(new ValidationResult("Duplicate Name", new[] { "Name" }));

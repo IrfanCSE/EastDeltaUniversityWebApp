@@ -206,17 +206,25 @@
     <Compile Include="Migrations\202005201453344_AddCourseTableWithConfig.designer.cs">
       <DependentUpon>202005201453344_AddCourseTableWithConfig.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202005211127361_AddTeacherAndDesignation.cs" />
+    <Compile Include="Migrations\202005211127361_AddTeacherAndDesignation.designer.cs">
+      <DependentUpon>202005211127361_AddTeacherAndDesignation.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Context\ApplicationDbContext.cs" />
     <Compile Include="Models\Configuration\CourseConfig.cs" />
     <Compile Include="Models\Configuration\DepartmentConfig.cs" />
+    <Compile Include="Models\Configuration\DesignationConfig.cs" />
     <Compile Include="Models\Configuration\SemesterConfig.cs" />
     <Compile Include="Models\Course.cs" />
     <Compile Include="Models\Department.cs" />
+    <Compile Include="Models\Designation.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
     <Compile Include="Models\Semester.cs" />
+    <Compile Include="Models\Teacher.cs" />
+    <Compile Include="Models\Configuration\TeacherConfig.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
   </ItemGroup>
@@ -285,6 +293,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Models\ViewModels\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff" />
@@ -317,6 +326,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202005201453344_AddCourseTableWithConfig.resx">
       <DependentUpon>202005201453344_AddCourseTableWithConfig.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202005211127361_AddTeacherAndDesignation.resx">
+      <DependentUpon>202005211127361_AddTeacherAndDesignation.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
