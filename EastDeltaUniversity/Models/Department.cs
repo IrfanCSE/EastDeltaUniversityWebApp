@@ -11,6 +11,7 @@ namespace EastDeltaUniversity.Models
 {
     public partial class Department
     {
+        [Display(Name = "Department")]
         public int Id { get; set; }
 
         [Required]
@@ -23,6 +24,8 @@ namespace EastDeltaUniversity.Models
         public ICollection<Course> Courses { get; set; }
 
         public ICollection<Teacher> Teachers { get; set; }
+
+        public ICollection<TeacherAssign> TeacherAssigns { get; set; }
 
         [NotMapped]
         public bool EditMode { get; set; }

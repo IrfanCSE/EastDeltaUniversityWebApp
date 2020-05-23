@@ -9,6 +9,7 @@ namespace EastDeltaUniversity.Models
 {
     public partial class Course
     {
+        [Display(Name = "Course")]
         public int Id { get; set; }
         
         [Required]
@@ -33,6 +34,8 @@ namespace EastDeltaUniversity.Models
         [Display(Name = "Semester")]
         public int SemesterId { get; set; }
         public Semester Semester { get; set; }
+
+        public ICollection<TeacherAssign> TeacherAssigns { get; set; }
     }
 
     public partial class Course:IValidatableObject

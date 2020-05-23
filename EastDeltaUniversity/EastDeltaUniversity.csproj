@@ -164,16 +164,19 @@
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\CourseController.cs" />
-    <Compile Include="Controllers\DepartmentsController.cs" />
+    <Compile Include="Controllers\DepartmentController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
+    <Compile Include="Controllers\TeacherController.cs" />
     <Compile Include="Gateway\CourseGateway.cs" />
     <Compile Include="Gateway\DepartmentGateway.cs" />
+    <Compile Include="Gateway\TeacherGateway.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Manager\CourseManager.cs" />
     <Compile Include="Manager\DepartmentManager.cs" />
+    <Compile Include="Manager\TeacherManager.cs" />
     <Compile Include="Migrations\202005161440317_initialize.cs" />
     <Compile Include="Migrations\202005161440317_initialize.designer.cs">
       <DependentUpon>202005161440317_initialize.cs</DependentUpon>
@@ -210,6 +213,22 @@
     <Compile Include="Migrations\202005211127361_AddTeacherAndDesignation.designer.cs">
       <DependentUpon>202005211127361_AddTeacherAndDesignation.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202005211419449_DataOfDesignation.cs" />
+    <Compile Include="Migrations\202005211419449_DataOfDesignation.designer.cs">
+      <DependentUpon>202005211419449_DataOfDesignation.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202005211549499_CreditAddedToTeacher.cs" />
+    <Compile Include="Migrations\202005211549499_CreditAddedToTeacher.designer.cs">
+      <DependentUpon>202005211549499_CreditAddedToTeacher.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202005221349595_TeacherAssignTable.cs" />
+    <Compile Include="Migrations\202005221349595_TeacherAssignTable.designer.cs">
+      <DependentUpon>202005221349595_TeacherAssignTable.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202005230957201_TeacherAssignUpdateWithDepartment.cs" />
+    <Compile Include="Migrations\202005230957201_TeacherAssignUpdateWithDepartment.designer.cs">
+      <DependentUpon>202005230957201_TeacherAssignUpdateWithDepartment.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Context\ApplicationDbContext.cs" />
@@ -217,6 +236,7 @@
     <Compile Include="Models\Configuration\DepartmentConfig.cs" />
     <Compile Include="Models\Configuration\DesignationConfig.cs" />
     <Compile Include="Models\Configuration\SemesterConfig.cs" />
+    <Compile Include="Models\Configuration\TeacherAssignConfig.cs" />
     <Compile Include="Models\Course.cs" />
     <Compile Include="Models\Department.cs" />
     <Compile Include="Models\Designation.cs" />
@@ -225,6 +245,10 @@
     <Compile Include="Models\Semester.cs" />
     <Compile Include="Models\Teacher.cs" />
     <Compile Include="Models\Configuration\TeacherConfig.cs" />
+    <Compile Include="Models\TeacherAssign.cs" />
+    <Compile Include="Models\ViewModels\CourseView.cs" />
+    <Compile Include="Models\ViewModels\TeacherAssignView.cs" />
+    <Compile Include="Models\ViewModels\TeacherView.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
   </ItemGroup>
@@ -284,16 +308,17 @@
     <Content Include="Views\Manage\VerifyPhoneNumber.cshtml" />
     <Content Include="Views\Shared\Lockout.cshtml" />
     <Content Include="Views\Shared\_LoginPartial.cshtml" />
-    <Content Include="Views\Departments\Create.cshtml" />
-    <Content Include="Views\Departments\Index.cshtml" />
-    <Content Include="Views\Departments\Details.cshtml" />
-    <Content Include="Views\Departments\Edit.cshtml" />
-    <Content Include="Views\Departments\Delete.cshtml" />
+    <Content Include="Views\Department\Create.cshtml" />
+    <Content Include="Views\Department\Index.cshtml" />
+    <Content Include="Views\Department\Details.cshtml" />
+    <Content Include="Views\Department\Edit.cshtml" />
+    <Content Include="Views\Department\Delete.cshtml" />
     <Content Include="Views\Course\Create.cshtml" />
+    <Content Include="Views\Teacher\Create.cshtml" />
+    <Content Include="Views\Teacher\Assign.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Models\ViewModels\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff" />
@@ -329,6 +354,18 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202005211127361_AddTeacherAndDesignation.resx">
       <DependentUpon>202005211127361_AddTeacherAndDesignation.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202005211419449_DataOfDesignation.resx">
+      <DependentUpon>202005211419449_DataOfDesignation.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202005211549499_CreditAddedToTeacher.resx">
+      <DependentUpon>202005211549499_CreditAddedToTeacher.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202005221349595_TeacherAssignTable.resx">
+      <DependentUpon>202005221349595_TeacherAssignTable.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202005230957201_TeacherAssignUpdateWithDepartment.resx">
+      <DependentUpon>202005230957201_TeacherAssignUpdateWithDepartment.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

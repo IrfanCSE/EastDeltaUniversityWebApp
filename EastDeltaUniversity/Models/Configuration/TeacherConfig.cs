@@ -48,6 +48,9 @@ namespace EastDeltaUniversity.Models.Configuration
                 .HasForeignKey(x=>x.DepartmentId)
                 .WillCascadeOnDelete(false);
 
+            Property(x => x.Credit)
+                .IsRequired();
+
         }
     }
 }

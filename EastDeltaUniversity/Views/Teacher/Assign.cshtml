@@ -1,0 +1,192 @@
+﻿@model EastDeltaUniversity.Models.ViewModels.TeacherAssignView
+
+@{
+    ViewBag.Title = "Assign";
+}
+
+<h2>Assign</h2>
+
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+
+    <div class="form-horizontal">
+        <h4>TeacherAssignView</h4>
+        <hr />
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.TeacherAssign.DepartmentId, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.DropDownListFor(x => x.TeacherAssign.DepartmentId, new SelectList(ViewBag.DepartmentId, "Id", "Code"), "--Select Department--", new { @class = "form-control" })
+                @Html.ValidationMessageFor(model => model.TeacherAssign.DepartmentId, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.TeacherAssign.TeacherId, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                <select id="TeacherAssign_TeacherId" name="TeacherAssign.TeacherId" for="TeacherAssign_TeacherId" class="form-control required">
+                    <option value="">--Select Teacher--</option>
+                </select>
+                @Html.ValidationMessageFor(x=>x.TeacherAssign.TeacherId,"", new { @class = "text-danger" })
+            </div>
+        </div>
+
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Teacher.Credit, htmlAttributes: new {@class = "control-label col-md-2"})
+            <div class="col-md-10">
+                @Html.TextBoxFor(x => x.Teacher.Credit, new {@class = "form-control", @readonly = "readonly"})
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(x => x.Teacher.CreditRemaining, new {@class = "control-label col-md-2"})
+            <div class="col-md-10">
+                @Html.TextBoxFor(x => x.Teacher.CreditRemaining, new { @class = "form-control", @readonly = "readonly"})
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.TeacherAssign.CourseId, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                <select id="TeacherAssign_CourseId" name="TeacherAssign.CourseId" for="TeacherAssign_CourseId" class="form-control required">
+                    <option value="">--Select Course--</option>
+                </select>
+                @Html.ValidationMessageFor(x=>x.TeacherAssign.CourseId,"", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(x => x.Course.Name, new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.TextBoxFor(x => x.Course.Name, new { @class = "form-control", @readonly = "readonly" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(x => x.Course.Credit, new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.TextBoxFor(x => x.Course.Credit, new { @class = "form-control", @readonly = "readonly" })
+            </div>
+        </div>
+
+        @Html.HiddenFor(x=>x.TeacherAssign.IsActive)
+
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Create" class="btn btn-default" />
+            </div>
+        </div>
+    </div>
+}
+
+<div>
+    @*@Html.ActionLink("Back to List", "Index")*@
+</div>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+
+    <script>
+        $(document).ready(function() {
+
+            //GetTeachers By Department.
+
+            $("#TeacherAssign_DepartmentId").change(function () {
+                var departmentId = $("#TeacherAssign_DepartmentId").val();
+                var json = { departmentId: departmentId };
+
+                $.ajax({
+                    type: "POST",
+                    url: '@Url.Action("TeachersByDepartment", "Teacher")',
+                    contentType: "application/json; charset=utf-8",
+                    data: JSON.stringify(json),
+                    success: function (data) {
+
+                        $("#TeacherAssign_TeacherId").empty();
+                        $("#TeacherAssign_TeacherId").append('<option value="">--Select Teacher--</option>');
+
+                        $.each(data, function (key, value) {
+                            $("#TeacherAssign_TeacherId").append('<option value="' + value.Id + '">' + value.Name + '</option>');
+                        });
+                    }
+                });
+            });
+
+            //Get Course By Department.
+
+            $("#TeacherAssign_DepartmentId").change(function () {
+                var departmentId = $("#TeacherAssign_DepartmentId").val();
+                var json = { departmentId: departmentId };
+
+                $.ajax({
+                    type: "POST",
+                    url: '@Url.Action("CoursesByDepartment", "Teacher")',
+                    contentType: "application/json; charset=utf-8",
+                    data: JSON.stringify(json),
+                    success: function (data) {
+
+                        $("#TeacherAssign_CourseId").empty();
+                        $("#TeacherAssign_CourseId").append('<option value="">--Select Course--</option>');
+
+                        $.each(data, function (key, value) {
+                            $("#TeacherAssign_CourseId").append('<option value="' + value.Id + '">' + value.Code + '</option>');
+                        });
+                    }
+                });
+            });
+
+            //Get Teacher Data By TeacherId
+
+            $("#TeacherAssign_TeacherId").change(function () {
+                var teacherId = $("#TeacherAssign_TeacherId").val();
+                var json = { teacherId: teacherId };
+
+                $.ajax({
+                    type: "POST",
+                    url: '@Url.Action("TeacherData", "Teacher")',
+                    contentType: "application/json; charset=utf-8",
+                    data: JSON.stringify(json),
+                    success: function (data) {
+
+                            $("#Teacher_Credit").val('');
+                            $("#Teacher_CreditRemaining").val('');
+
+                            $("#Teacher_Credit").val(data.Credit);
+                            $("#Teacher_CreditRemaining").val(data.CreditRemaining);
+                    }
+                });
+            });
+
+            //Get Course Data By TeacherId
+
+            $("#TeacherAssign_CourseId").change(function () {
+                var courseId = $("#TeacherAssign_CourseId").val();
+                var json = { courseId: courseId };
+
+                $.ajax({
+                    type: "POST",
+                    url: '@Url.Action("CourseData", "Teacher")',
+                    contentType: "application/json; charset=utf-8",
+                    data: JSON.stringify(json),
+                    success: function (data) {
+
+                        $("#Course_Name").val('');
+                        $("#Course_Credit").val('');
+
+                        $("#Course_Name").val(data.Name);
+                        $("#Course_Credit").val(data.Credit);
+                    }
+                });
+            });
+
+            //Make IsActive True
+
+            $("#TeacherAssign_IsActive").val(true);
+
+        });
+    </script>
+}

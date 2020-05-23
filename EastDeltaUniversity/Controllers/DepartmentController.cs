@@ -9,11 +9,11 @@ using EastDeltaUniversity.Models;
 
 namespace EastDeltaUniversity.Controllers
 {
-    public class DepartmentsController : Controller
+    public class DepartmentController : Controller
     {
         private ApplicationDbContext _context;
         private DepartmentManager _departmentManager;
-        public DepartmentsController()
+        public DepartmentController()
         {
             _departmentManager = new DepartmentManager();
             _context= new ApplicationDbContext();
