@@ -77,7 +77,7 @@
 
         <div class="form-group">
             <div class="col-md-offset-2 col-md-10">
-                <input type="submit" value="Create" class="btn btn-default" />
+                <input id="SubmitForm" type="submit" value="Create" class="btn btn-default" />
             </div>
         </div>
     </div>
@@ -186,6 +186,17 @@
             //Make IsActive True
 
             $("#TeacherAssign_IsActive").val(true);
+
+            //Credit Checking
+
+            $("#SubmitForm").click(function() {
+                var remainingCredit = $("#Teacher_CreditRemaining").val();
+                var courseCredit = $("#Course_Credit").val();
+
+                if (courseCredit>remainingCredit) {
+                    return confirm("Credit Cross Teacher Remaining Credit! Yes To Continue.");
+                }
+            });
 
         });
     </script>
