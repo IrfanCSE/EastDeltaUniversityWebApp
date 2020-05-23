@@ -30,6 +30,9 @@ namespace EastDeltaUniversity.Models
         [Required]
         public bool IsActive { get; set; }
 
+        [NotMapped]
+        public int Credit { get; set; }
+
     }
 
     public partial class TeacherAssign:IValidatableObject

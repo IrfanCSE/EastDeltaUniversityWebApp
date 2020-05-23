@@ -64,7 +64,10 @@ namespace EastDeltaUniversity.Controllers
                 return View("Assign",teacherAssignView);
             }
 
+            teacherAssign.Credit = teacherAssignView.Course.Credit;
+
             _teacherManager.Assign(teacherAssign);
+
             return RedirectToAction("Assign");
         }
 

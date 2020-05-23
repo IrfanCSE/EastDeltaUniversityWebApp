@@ -50,7 +50,11 @@ namespace EastDeltaUniversity.Manager
 
         public void Assign(TeacherAssign teacherAssign)
         {
-            _teacherGateway.Assign(teacherAssign);
+            var success = _teacherGateway.Assign(teacherAssign);
+            if (success>0)
+            {
+                _teacherGateway.AddCredit(teacherAssign.TeacherId, teacherAssign.Credit);                
+            }
         }
 
     }

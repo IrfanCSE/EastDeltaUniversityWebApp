@@ -1,7 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data.Entity;
+using System.Data.Entity.Validation;
+using System.Diagnostics;
 using System.Linq;
 using System.Web;
+using System.Web.Mvc;
 using EastDeltaUniversity.Context;
 using EastDeltaUniversity.Models;
 
@@ -47,10 +51,23 @@ namespace EastDeltaUniversity.Gateway
             return _context.Courses.FirstOrDefault(x => x.Id == id);
         }
 
-        public void Assign(TeacherAssign teacherAssign)
+        public int Assign(TeacherAssign teacherAssign)
         {
             _context.TeacherAssigns.Add(teacherAssign);
-            _context.SaveChanges();
+            return _context.SaveChanges();
+        }
+
+        public void AddCredit(int teacherId, int credit)
+        {
+            var teacher = _context.Teachers.SingleOrDefault(x => x.Id == teacherId);
+
+            if (teacher != null)
+            {
+                teacher.CreditTaken += credit;
+                teacher.EditMode = true;
+                //_context.Entry(teacher).State=EntityState.Modified;
+                _context.SaveChanges();
+            }
         }
     }
 }
