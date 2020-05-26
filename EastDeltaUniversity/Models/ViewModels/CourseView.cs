@@ -14,12 +14,16 @@ namespace EastDeltaUniversity.Models.ViewModels
 
         public int Credit { get; set; }
 
-        public string Description { get; set; }
+        //public string Description { get; set; }
 
         [Display(Name = "Department")]
         public int DepartmentId { get; set; }
 
         [Display(Name = "Semester")]
         public int SemesterId { get; set; }
+        public string SemesterName { get; set; }
+
+        public int TeacherId { get; set; }
+        public string TeacherName { get; set; }
     }
 }

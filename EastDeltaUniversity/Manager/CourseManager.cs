@@ -4,6 +4,7 @@ using System.Linq;
 using System.Web;
 using EastDeltaUniversity.Gateway;
 using EastDeltaUniversity.Models;
+using EastDeltaUniversity.Models.ViewModels;
 
 namespace EastDeltaUniversity.Manager
 {
@@ -32,6 +33,11 @@ namespace EastDeltaUniversity.Manager
             {
                 return "Failed";
             }
+        }
+
+        public List<CourseView> GetCoursesByDepartment(int id)
+        {
+            return _courseGateway.GetCoursesByDepartment(id);
         }
     }
 }

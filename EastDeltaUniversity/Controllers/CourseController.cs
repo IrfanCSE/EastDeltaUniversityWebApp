@@ -15,11 +15,12 @@ namespace EastDeltaUniversity.Controllers
             _departmentManager = new DepartmentManager();
         }
 
-        // GET: Course
-        //public ActionResult Index()
-        //{
-        //    return View();
-        //}
+        [HttpGet]
+        public ActionResult Index()
+        {
+            ViewBag.DepartmentId = _departmentManager.GetDepartmentList();
+            return View();
+        }
 
         [HttpGet]
         public ActionResult Create()
@@ -42,5 +43,15 @@ namespace EastDeltaUniversity.Controllers
             TempData["message"]=_courseManager.Save(course);
             return RedirectToAction("Create");
         }
+
+
+        //JSON Results
+
+        public JsonResult CourseByDepartment(int departmentId)
+        {
+            var course = _courseManager.GetCoursesByDepartment(departmentId);
+            return Json(course);
+        }
+
     }
 }

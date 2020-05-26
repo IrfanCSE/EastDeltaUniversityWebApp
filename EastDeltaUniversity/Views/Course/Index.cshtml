@@ -1,0 +1,82 @@
+﻿@using EastDeltaUniversity.Models.ViewModels
+@model CourseView
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+
+<div class="form-group">
+    @Html.LabelFor(x => x.DepartmentId,new{@class="col-md-2"})
+    <div class="col-md-10">
+        @Html.DropDownListFor(x => x.DepartmentId, new SelectList(ViewBag.DepartmentId, "Id", "Code"), "--Select Department--", new { @class = "form-control" })
+    </div>
+</div>
+<br/>
+<div>
+    <h4 class="h4">Course Information</h4>
+</div>
+
+<div class="table">
+    <table id="CourseDataTable" class="table table-bordered table-striped table-hover">
+        <thead>
+            <tr>
+                <th class="text-center">
+                    @Html.LabelFor(x => x.Code)
+                </th>
+                <th class="text-center">
+                    @Html.LabelFor(x => x.Name)
+                </th>
+                <th class="text-center">
+                    @Html.LabelFor(x => x.SemesterName)
+                </th>
+                <th class="text-center">
+                    @Html.LabelFor(x => x.TeacherName)
+                </th>
+            </tr>
+        </thead>
+
+        <tbody id="CourseTable" class="text-center"></tbody>
+    </table>
+</div>
+
+
+@section scripts
+{
+    <script>
+        $(document).ready(function () {
+
+            //Courses By Department.
+
+            $("#DepartmentId").change(function () {
+                var departmentId = $("#DepartmentId").val();
+                var json = { departmentId: departmentId };
+
+                $.ajax({
+                    type: "POST",
+                    url: '@Url.Action("CourseByDepartment", "Course")',
+                    contentType: "application/json; charset=utf-8",
+                    data: JSON.stringify(json),
+                    success: function (data) {
+
+                        $("#CourseTable").empty();
+
+                        $.each(data, function (key, value) {
+                            $("#CourseTable").append('<tr><td>' + value.Code + '</td><td>' + value.Name + '</td><td>' + value.SemesterName + '</td><td>' + value.TeacherName + '</td></tr>');
+                        });
+                    }
+                });
+            });
+
+            //DataTable Call
+
+            $("#CourseDataTable").DataTable();
+
+        });
+    </script>
+}
