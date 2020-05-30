@@ -244,20 +244,42 @@
     <Compile Include="Migrations\202005271059460_StudentTable1.designer.cs">
       <DependentUpon>202005271059460_StudentTable1.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202005301142026_DayTable.cs" />
+    <Compile Include="Migrations\202005301142026_DayTable.designer.cs">
+      <DependentUpon>202005301142026_DayTable.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202005301143557_DayData.cs" />
+    <Compile Include="Migrations\202005301143557_DayData.designer.cs">
+      <DependentUpon>202005301143557_DayData.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202005301220277_RoomTable.cs" />
+    <Compile Include="Migrations\202005301220277_RoomTable.designer.cs">
+      <DependentUpon>202005301220277_RoomTable.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202005301407051_ClassTableAdded.cs" />
+    <Compile Include="Migrations\202005301407051_ClassTableAdded.designer.cs">
+      <DependentUpon>202005301407051_ClassTableAdded.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Context\ApplicationDbContext.cs" />
+    <Compile Include="Models\Class.cs" />
+    <Compile Include="Models\Configuration\ClassConfig.cs" />
     <Compile Include="Models\Configuration\CourseConfig.cs" />
+    <Compile Include="Models\Configuration\DayConfig.cs" />
     <Compile Include="Models\Configuration\DepartmentConfig.cs" />
     <Compile Include="Models\Configuration\DesignationConfig.cs" />
+    <Compile Include="Models\Configuration\RoomConfig.cs" />
     <Compile Include="Models\Configuration\SemesterConfig.cs" />
     <Compile Include="Models\Configuration\StudentConfig.cs" />
     <Compile Include="Models\Configuration\TeacherAssignConfig.cs" />
     <Compile Include="Models\Course.cs" />
+    <Compile Include="Models\Day.cs" />
     <Compile Include="Models\Department.cs" />
     <Compile Include="Models\Designation.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
+    <Compile Include="Models\Room.cs" />
     <Compile Include="Models\Semester.cs" />
     <Compile Include="Models\Student.cs" />
     <Compile Include="Models\Teacher.cs" />
@@ -503,6 +525,18 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202005271059460_StudentTable1.resx">
       <DependentUpon>202005271059460_StudentTable1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202005301142026_DayTable.resx">
+      <DependentUpon>202005301142026_DayTable.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202005301143557_DayData.resx">
+      <DependentUpon>202005301143557_DayData.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202005301220277_RoomTable.resx">
+      <DependentUpon>202005301220277_RoomTable.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202005301407051_ClassTableAdded.resx">
+      <DependentUpon>202005301407051_ClassTableAdded.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>

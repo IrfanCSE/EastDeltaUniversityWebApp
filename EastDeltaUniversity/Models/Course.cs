@@ -36,6 +36,8 @@ namespace EastDeltaUniversity.Models
         public Semester Semester { get; set; }
 
         public ICollection<TeacherAssign> TeacherAssigns { get; set; }
+
+        public ICollection<Class> Classes { get; set; }
     }
 
     public partial class Course:IValidatableObject

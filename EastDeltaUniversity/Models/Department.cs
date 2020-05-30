@@ -29,6 +29,8 @@ namespace EastDeltaUniversity.Models
 
         public ICollection<Student> Students { get; set; }
 
+        public ICollection<Class> Classes { get; set; }
+
         [NotMapped]
         public bool EditMode { get; set; }
     }
