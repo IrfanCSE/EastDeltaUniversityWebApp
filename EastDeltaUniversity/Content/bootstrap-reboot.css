@@ -33,9 +33,9 @@ body {
   background-color: #fff;
 }
 
-/*[tabindex="-1"]:focus:not(:focus-visible) {
+[tabindex="-1"]:focus:not(:focus-visible) {
   outline: 0 !important;
-}*/
+}
 
 hr {
   box-sizing: content-box;
@@ -61,7 +61,7 @@ abbr[data-original-title] {
   cursor: help;
   border-bottom: 0;
   -webkit-text-decoration-skip-ink: none;
-  /*text-decoration-skip-ink: none;*/
+  text-decoration-skip-ink: none;
 }
 
 address {
