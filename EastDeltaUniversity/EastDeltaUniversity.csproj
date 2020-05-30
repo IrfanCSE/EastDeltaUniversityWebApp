@@ -167,15 +167,18 @@
     <Compile Include="Controllers\DepartmentController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
+    <Compile Include="Controllers\StudentController.cs" />
     <Compile Include="Controllers\TeacherController.cs" />
     <Compile Include="Gateway\CourseGateway.cs" />
     <Compile Include="Gateway\DepartmentGateway.cs" />
+    <Compile Include="Gateway\StudentGateway.cs" />
     <Compile Include="Gateway\TeacherGateway.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Manager\CourseManager.cs" />
     <Compile Include="Manager\DepartmentManager.cs" />
+    <Compile Include="Manager\StudentManager.cs" />
     <Compile Include="Manager\TeacherManager.cs" />
     <Compile Include="Migrations\202005161440317_initialize.cs" />
     <Compile Include="Migrations\202005161440317_initialize.designer.cs">
@@ -229,6 +232,14 @@
     <Compile Include="Migrations\202005230957201_TeacherAssignUpdateWithDepartment.designer.cs">
       <DependentUpon>202005230957201_TeacherAssignUpdateWithDepartment.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202005271022143_StudentTable.cs" />
+    <Compile Include="Migrations\202005271022143_StudentTable.designer.cs">
+      <DependentUpon>202005271022143_StudentTable.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202005271059460_StudentTable1.cs" />
+    <Compile Include="Migrations\202005271059460_StudentTable1.designer.cs">
+      <DependentUpon>202005271059460_StudentTable1.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Context\ApplicationDbContext.cs" />
@@ -236,6 +247,7 @@
     <Compile Include="Models\Configuration\DepartmentConfig.cs" />
     <Compile Include="Models\Configuration\DesignationConfig.cs" />
     <Compile Include="Models\Configuration\SemesterConfig.cs" />
+    <Compile Include="Models\Configuration\StudentConfig.cs" />
     <Compile Include="Models\Configuration\TeacherAssignConfig.cs" />
     <Compile Include="Models\Course.cs" />
     <Compile Include="Models\Department.cs" />
@@ -243,16 +255,22 @@
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
     <Compile Include="Models\Semester.cs" />
+    <Compile Include="Models\Student.cs" />
     <Compile Include="Models\Teacher.cs" />
     <Compile Include="Models\Configuration\TeacherConfig.cs" />
     <Compile Include="Models\TeacherAssign.cs" />
     <Compile Include="Models\ViewModels\CourseView.cs" />
+    <Compile Include="Models\ViewModels\StudentView.cs" />
     <Compile Include="Models\ViewModels\TeacherAssignView.cs" />
     <Compile Include="Models\ViewModels\TeacherView.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Content\bootstrap-grid.css" />
+    <Content Include="Content\bootstrap-grid.min.css" />
+    <Content Include="Content\bootstrap-reboot.css" />
+    <Content Include="Content\bootstrap-reboot.min.css" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="Content\dataTables.bootstrap.min.css" />
@@ -260,8 +278,14 @@
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
+    <Content Include="Scripts\bootstrap.bundle.js" />
+    <Content Include="Scripts\bootstrap.bundle.min.js" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
+    <Content Include="Scripts\bootstrap.bundle.js.map" />
+    <Content Include="Scripts\bootstrap.bundle.min.js.map" />
+    <Content Include="Scripts\bootstrap.js.map" />
+    <Content Include="Scripts\bootstrap.min.js.map" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\dataTables.bootstrap.min.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
@@ -320,6 +344,8 @@
     <Content Include="Views\Teacher\Create.cshtml" />
     <Content Include="Views\Teacher\Assign.cshtml" />
     <Content Include="Views\Course\Index.cshtml" />
+    <Content Include="Views\Student\Registration.cshtml" />
+    <Content Include="Views\Student\Preview.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -370,6 +396,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202005230957201_TeacherAssignUpdateWithDepartment.resx">
       <DependentUpon>202005230957201_TeacherAssignUpdateWithDepartment.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202005271022143_StudentTable.resx">
+      <DependentUpon>202005271022143_StudentTable.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202005271059460_StudentTable1.resx">
+      <DependentUpon>202005271059460_StudentTable1.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

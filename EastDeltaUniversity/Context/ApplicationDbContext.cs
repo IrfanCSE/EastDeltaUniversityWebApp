@@ -23,6 +23,7 @@ namespace EastDeltaUniversity.Context
         public DbSet<Teacher> Teachers { get; set; }
         public DbSet<Designation> Designations { get; set; }
         public DbSet<TeacherAssign> TeacherAssigns { get; set; }
+        public DbSet<Student> Students { get; set; }
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
@@ -32,6 +33,7 @@ namespace EastDeltaUniversity.Context
             modelBuilder.Configurations.Add(new DesignationConfig());
             modelBuilder.Configurations.Add(new TeacherConfig());
             modelBuilder.Configurations.Add(new TeacherAssignConfig());
+            modelBuilder.Configurations.Add(new StudentConfig());
 
             base.OnModelCreating(modelBuilder);
         }

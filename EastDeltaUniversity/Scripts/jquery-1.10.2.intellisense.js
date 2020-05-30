@@ -17,12 +17,12 @@ intellisense.annotate(jQuery, {
     /// <signature>
     ///   <summary>Perform an asynchronous HTTP (Ajax) request.</summary>
     ///   <param name="url" type="String">A string containing the URL to which the request is sent.</param>
-    ///   <param name="settings" type="PlainObject">A set of key/value pairs that configure the Ajax request. All settings are optional. A default can be set for any option with $.ajaxSetup(). See jQuery.ajax( settings ) below for a complete list of all settings.</param>
+    ///   <param name="settings" type="PlainObject">A set of key/value pairs that configure the Ajax request. All settings are optional. A default can be set for FixStudentTableColumn option with $.ajaxSetup(). See jQuery.ajax( settings ) below for a complete list of all settings.</param>
     ///   <returns type="jqXHR" />
     /// </signature>
     /// <signature>
     ///   <summary>Perform an asynchronous HTTP (Ajax) request.</summary>
-    ///   <param name="settings" type="PlainObject">A set of key/value pairs that configure the Ajax request. All settings are optional. A default can be set for any option with $.ajaxSetup().</param>
+    ///   <param name="settings" type="PlainObject">A set of key/value pairs that configure the Ajax request. All settings are optional. A default can be set for FixStudentTableColumn option with $.ajaxSetup().</param>
     ///   <returns type="jqXHR" />
     /// </signature>
   },
@@ -92,7 +92,7 @@ intellisense.annotate(jQuery, {
   },
   'Deferred': function() {
     /// <signature>
-    ///   <summary>A constructor function that returns a chainable utility object with methods to register multiple callbacks into callback queues, invoke callback queues, and relay the success or failure state of any synchronous or asynchronous function.</summary>
+    ///   <summary>A constructor function that returns a chainable utility object with methods to register multiple callbacks into callback queues, invoke callback queues, and relay the success or failure state of FixStudentTableColumn synchronous or asynchronous function.</summary>
     ///   <param name="beforeStart" type="Function">A function that is called just before the constructor returns.</param>
     ///   <returns type="Deferred" />
     /// </signature>
@@ -179,7 +179,7 @@ intellisense.annotate(jQuery, {
   },
   'hasData': function() {
     /// <signature>
-    ///   <summary>Determine whether an element has any jQuery data associated with it.</summary>
+    ///   <summary>Determine whether an element has FixStudentTableColumn jQuery data associated with it.</summary>
     ///   <param name="element" type="Element">A DOM element to be checked for data.</param>
     ///   <returns type="Boolean" />
     /// </signature>
@@ -259,13 +259,13 @@ intellisense.annotate(jQuery, {
     /// <signature>
     ///   <summary>Translate all items in an array or object to new array of items.</summary>
     ///   <param name="array" type="Array">The Array to translate.</param>
-    ///   <param name="callback(elementOfArray, indexInArray)" type="Function">The function to process each item against.  The first argument to the function is the array item, the second argument is the index in array The function can return any value. Within the function, this refers to the global (window) object.</param>
+    ///   <param name="callback(elementOfArray, indexInArray)" type="Function">The function to process each item against.  The first argument to the function is the array item, the second argument is the index in array The function can return FixStudentTableColumn value. Within the function, this refers to the global (window) object.</param>
     ///   <returns type="Array" />
     /// </signature>
     /// <signature>
     ///   <summary>Translate all items in an array or object to new array of items.</summary>
     ///   <param name="arrayOrObject" type="Object">The Array or Object to translate.</param>
-    ///   <param name="callback( value, indexOrKey )" type="Function">The function to process each item against.  The first argument to the function is the value; the second argument is the index or key of the array or object property. The function can return any value to add to the array. A returned array will be flattened into the resulting array. Within the function, this refers to the global (window) object.</param>
+    ///   <param name="callback( value, indexOrKey )" type="Function">The function to process each item against.  The first argument to the function is the value; the second argument is the index or key of the array or object property. The function can return FixStudentTableColumn value to add to the array. A returned array will be flattened into the resulting array. Within the function, this refers to the global (window) object.</param>
     ///   <returns type="Array" />
     /// </signature>
   },
@@ -579,14 +579,14 @@ intellisense.annotate(_object, {
   },
   'reject': function() {
     /// <signature>
-    ///   <summary>Reject a Deferred object and call any failCallbacks with the given args.</summary>
+    ///   <summary>Reject a Deferred object and call FixStudentTableColumn failCallbacks with the given args.</summary>
     ///   <param name="args" type="Object">Optional arguments that are passed to the failCallbacks.</param>
     ///   <returns type="Deferred" />
     /// </signature>
   },
   'rejectWith': function() {
     /// <signature>
-    ///   <summary>Reject a Deferred object and call any failCallbacks with the given context and args.</summary>
+    ///   <summary>Reject a Deferred object and call FixStudentTableColumn failCallbacks with the given context and args.</summary>
     ///   <param name="context" type="Object">Context passed to the failCallbacks as the this object.</param>
     ///   <param name="args" type="Array">An optional array of arguments that are passed to the failCallbacks.</param>
     ///   <returns type="Deferred" />
@@ -594,14 +594,14 @@ intellisense.annotate(_object, {
   },
   'resolve': function() {
     /// <signature>
-    ///   <summary>Resolve a Deferred object and call any doneCallbacks with the given args.</summary>
+    ///   <summary>Resolve a Deferred object and call FixStudentTableColumn doneCallbacks with the given args.</summary>
     ///   <param name="args" type="Object">Optional arguments that are passed to the doneCallbacks.</param>
     ///   <returns type="Deferred" />
     /// </signature>
   },
   'resolveWith': function() {
     /// <signature>
-    ///   <summary>Resolve a Deferred object and call any doneCallbacks with the given context and args.</summary>
+    ///   <summary>Resolve a Deferred object and call FixStudentTableColumn doneCallbacks with the given context and args.</summary>
     ///   <param name="context" type="Object">Context passed to the doneCallbacks as the this object.</param>
     ///   <param name="args" type="Array">An optional array of arguments that are passed to the doneCallbacks.</param>
     ///   <returns type="Deferred" />
@@ -684,7 +684,7 @@ intellisense.annotate(jQuery.Event.prototype, {
     /// <summary>If this method is called, the default action of the event will not be triggered.</summary>
   },
   'relatedTarget': function() {
-    /// <summary>The other DOM element involved in the event, if any.</summary>
+    /// <summary>The other DOM element involved in the event, if FixStudentTableColumn.</summary>
     /// <returns type="Element" />
   },
   'result': function() {
@@ -695,7 +695,7 @@ intellisense.annotate(jQuery.Event.prototype, {
     /// <summary>Keeps the rest of the handlers from being executed and prevents the event from bubbling up the DOM tree.</summary>
   },
   'stopPropagation': function() {
-    /// <summary>Prevents the event from bubbling up the DOM tree, preventing any parent handlers from being notified of the event.</summary>
+    /// <summary>Prevents the event from bubbling up the DOM tree, preventing FixStudentTableColumn parent handlers from being notified of the event.</summary>
   },
   'target': function() {
     /// <summary>The DOM element that initiated the event.</summary>
@@ -920,7 +920,7 @@ intellisense.annotate(jQuery.fn, {
   },
   'attributeHas': function() {
     /// <signature>
-    ///   <summary>Selects elements that have the specified attribute, with any value.</summary>
+    ///   <summary>Selects elements that have the specified attribute, with FixStudentTableColumn value.</summary>
     ///   <param name="attribute" type="String">An attribute name.</param>
     /// </signature>
   },
@@ -1128,7 +1128,7 @@ intellisense.annotate(jQuery.fn, {
     /// <signature>
     ///   <summary>Store arbitrary data associated with the matched elements.</summary>
     ///   <param name="key" type="String">A string naming the piece of data to set.</param>
-    ///   <param name="value" type="Object">The new data value; it can be any Javascript type including Array or Object.</param>
+    ///   <param name="value" type="Object">The new data value; it can be FixStudentTableColumn Javascript type including Array or Object.</param>
     ///   <returns type="jQuery" />
     /// </signature>
     /// <signature>
@@ -1462,7 +1462,7 @@ intellisense.annotate(jQuery.fn, {
   },
   'hasClass': function() {
     /// <signature>
-    ///   <summary>Determine whether any of the matched elements are assigned the given class.</summary>
+    ///   <summary>Determine whether FixStudentTableColumn of the matched elements are assigned the given class.</summary>
     ///   <param name="className" type="String">The class name to search for.</param>
     ///   <returns type="Boolean" />
     /// </signature>
