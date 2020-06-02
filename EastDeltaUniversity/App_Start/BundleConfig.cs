@@ -22,12 +22,14 @@ namespace EastDeltaUniversity
             bundles.Add(new ScriptBundle("~/bundles/bootstrap").Include(
                       "~/Scripts/bootstrap.js",
                       "~/Scripts/respond.js",
-                      "~/Scripts/dataTables.bootstrap.min.js"));
+                      "~/Scripts/dataTables.bootstrap.min.js",
+                      "~/Scripts/bootstrap-timepicker.js"));
 
             bundles.Add(new StyleBundle("~/Content/css").Include(
                       "~/Content/darkly.bootstrap.css",
                       "~/Content/dataTables.bootstrap.min.css",
-                      "~/Content/site.css"
+                      "~/Content/site.css",
+                      "~/Content/bootstrap-timepicker.css"
                       ));
         }
     }
