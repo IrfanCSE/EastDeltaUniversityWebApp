@@ -1,0 +1,59 @@
+﻿@using EastDeltaUniversity.Models
+@model EastDeltaUniversity.Models.ViewModels.ClassView
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<div class="form-group">
+    @Html.LabelFor(x=>x.DepartmentId,new{@class="col-md-offset-3 col-md-2"})
+    <div class="dropdown">
+        @Html.DropDownListFor(x=>x.DepartmentId,new SelectList(ViewBag.DepartmentId,"Id","Code"),"--Select Department--",new {@class="form-control"})
+        @Html.ValidationMessageFor(x=>x.DepartmentId,"",new{@class="text-danger"})
+    </div>
+</div>
+
+<div class="table-responsive">          
+    <table class="table">
+        <thead>
+        <tr class="text-center">
+            <th>Course Code</th>
+            <th>Name</th>
+            <th>Schedule Info</th>
+        </tr>
+        </thead>
+        <tbody id="Class-Info">
+        </tbody>
+    </table>
+</div>
+
+
+@section scripts
+{
+    <script>
+        $(function() {
+
+            $("#DepartmentId").change(function () {
+                var departmentId = $("#DepartmentId").val();
+                var json = { departmentId: departmentId };
+
+                $.ajax({
+                    type: "POST",
+                    url: '@Url.Action("ClassInfo", "Class")',
+                    contentType: "application/json; charset=utf-8",
+                    data: JSON.stringify(json),
+                    success: function (data) {
+
+                        $("#Class-Info").empty();
+
+                        $.each(data, function (key, value) {
+                            $("#Class-Info").append('<tr> <td>' + value.CourseCode + '</td> <td>' + value.CourseName + '</td> <td>' + value.CourseInfo+'</td> </tr>');
+                        });
+                    }
+                });
+            });
+
+        });
+    </script>
+}

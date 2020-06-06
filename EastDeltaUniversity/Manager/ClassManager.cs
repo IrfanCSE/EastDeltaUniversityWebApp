@@ -4,6 +4,8 @@ using System.Linq;
 using System.Web;
 using EastDeltaUniversity.Gateway;
 using EastDeltaUniversity.Models;
+using EastDeltaUniversity.Models.ViewModels;
+using Microsoft.Ajax.Utilities;
 
 namespace EastDeltaUniversity.Manager
 {
@@ -29,6 +31,11 @@ namespace EastDeltaUniversity.Manager
         public void Allocate(Class aClass)
         {
             _classGateway.Allocate(aClass);
+        }
+
+        public List<ClassView> ClassInfo(int departmentId)
+        {
+            return _classGateway.ClassInfo(departmentId);
         }
 
 

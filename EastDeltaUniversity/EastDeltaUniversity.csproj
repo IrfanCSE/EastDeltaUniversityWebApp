@@ -35,6 +35,7 @@
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+    <PlatformTarget>AnyCPU</PlatformTarget>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugType>pdbonly</DebugType>
@@ -288,6 +289,7 @@
     <Compile Include="Models\Teacher.cs" />
     <Compile Include="Models\Configuration\TeacherConfig.cs" />
     <Compile Include="Models\TeacherAssign.cs" />
+    <Compile Include="Models\ViewModels\ClassView.cs" />
     <Compile Include="Models\ViewModels\CourseView.cs" />
     <Compile Include="Models\ViewModels\StudentView.cs" />
     <Compile Include="Models\ViewModels\TeacherAssignView.cs" />
@@ -484,6 +486,7 @@
     <Content Include="Scripts\popper.js.map" />
     <Content Include="Scripts\popper-utils.min.js.map" />
     <Content Include="Scripts\popper-utils.js.map" />
+    <Content Include="Views\Class\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

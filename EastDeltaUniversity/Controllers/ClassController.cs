@@ -21,11 +21,13 @@ namespace EastDeltaUniversity.Controllers
             _courseManager = new CourseManager();
         }
 
-        // GET: Class
-        //public ActionResult Index()
-        //{
-        //    return View();
-        //}
+        [HttpGet]
+        public ActionResult Index()
+        {
+            ViewBag.DepartmentId = _departmentManager.GetDepartmentList();
+
+            return View();
+        }
 
         [HttpGet]
         public ActionResult Allocate()
@@ -63,6 +65,12 @@ namespace EastDeltaUniversity.Controllers
         {
             var course = _courseManager.CoursesByDepartment(departmentId);
             return Json(course);
+        }
+
+        public JsonResult ClassInfo(int departmentId)
+        {
+            var classInfo=_classManager.ClassInfo(departmentId);
+            return Json(classInfo);
         }
         
     }
