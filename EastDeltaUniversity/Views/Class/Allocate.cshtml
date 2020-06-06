@@ -15,6 +15,7 @@
         <h4>Class</h4>
         <hr />
         @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        
         <div class="form-group">
             @Html.LabelFor(model => model.DepartmentId, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
@@ -26,7 +27,7 @@
         <div class="form-group">
             @Html.LabelFor(model => model.CourseId, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                <select id="Course_Id" name="CourseId" for="Course_Id" class="form-control required">
+                <select id="CourseId" name="CourseId" for="CourseId" class="form-control required">
                     <option value="">--Select Course--</option>
                 </select>
                 @Html.ValidationMessageFor(model => model.CourseId, "", new { @class = "text-danger" })
@@ -50,18 +51,18 @@
         </div>
 
         <div class="form-group">
-            @Html.LabelFor(model => model.FromTime, htmlAttributes: new { @class = "control-label col-md-2" })
+            @Html.LabelFor(model => model.FTime, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.EditorFor(model => model.FromTime, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.FromTime, "", new { @class = "text-danger" })
+                @Html.TextBoxFor(x=>x.FTime,new{@class="form-control"})
+                @Html.ValidationMessageFor(model => model.FTime, "", new { @class = "text-danger" })
             </div>
         </div>
 
         <div class="form-group">
-            @Html.LabelFor(model => model.ToTime, htmlAttributes: new { @class = "control-label col-md-2" })
+            @Html.LabelFor(model => model.TTime, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.EditorFor(model => model.ToTime, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.ToTime, "", new { @class = "text-danger" })
+                @Html.TextBoxFor(model => model.TTime, new { @class = "form-control" })
+                @Html.ValidationMessageFor(model => model.TTime, "", new { @class = "text-danger" })
             </div>
         </div>
 
@@ -69,7 +70,7 @@
 
         <div class="form-group">
             <div class="col-md-offset-2 col-md-10">
-                <input type="submit" value="Create" class="btn btn-default" />
+                <input id="formSubmit" type="submit" value="Create" class="btn btn-default" />
             </div>
         </div>
     </div>
@@ -85,38 +86,49 @@
     @Scripts.Render("~/bundles/jqueryval")
     <script>
         $(document).ready(function() {
-            
+
             //Course By Department
 
-            $("#DepartmentId").change(function () {
+            $("#DepartmentId").change(function() {
                 var departmentId = $("#DepartmentId").val();
                 var json = { departmentId: departmentId };
 
                 $.ajax({
                     type: "POST",
-                    url: '@Url.Action("CourseByDepartment", "Class")',
+                    url: '@Url.Action("CoursesByDepartment", "Class")',
                     contentType: "application/json; charset=utf-8",
                     data: JSON.stringify(json),
-                    success: function (data) {
+                    success: function(data) {
 
-                        $("#Course_Id").empty();
-                        $("#Course_Id").append('<option value="">--Select Course--</option>');
+                        $("#CourseId").empty();
+                        $("#CourseId").append('<option value="">--Select Course--</option>');
 
-                        $.each(data, function (key, value) {
-                            $("#Course_Id").append('<option value="' + value.Id + '">' + value.Code + '</option>');
-                        });
+                        $.each(data,
+                            function(key, value) {
+                                $("#CourseId").append('<option value="' + value.Id + '">' + value.Code + '</option>');
+                            });
                     }
                 });
             });
 
             //TimePicker
 
-            $("#FromTime").timepicker();
-            $("#ToTime").timepicker();
+            $("#FTime").timepicker();
+            $("#TTime").timepicker();
 
             //IsActive True
 
             $("#IsActive").val(true);
+
+            //Time Is Valid
+            //$("#formSubmit").click(function() {
+            //    var from = $("#FTime").val();
+            //    var to = $("#TTime").val();
+            //    if (to <= from) {
+            //        alert("Invalid Time");
+            //        return false;
+            //    }
+            //});
 
         });
     </script>

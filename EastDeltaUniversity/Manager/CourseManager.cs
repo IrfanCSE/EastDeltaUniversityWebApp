@@ -35,9 +35,15 @@ namespace EastDeltaUniversity.Manager
             }
         }
 
-        public List<CourseView> GetCoursesByDepartment(int id)
+        public List<CourseView> CourseDataByDepartment(int id)
         {
-            return _courseGateway.GetCoursesByDepartment(id);
+            return _courseGateway.CourseDataByDepartment(id);
         }
+
+        public List<Course> CoursesByDepartment(int id)
+        {
+            return _courseGateway.CoursesByDepartment(id);
+        }
+
     }
 }

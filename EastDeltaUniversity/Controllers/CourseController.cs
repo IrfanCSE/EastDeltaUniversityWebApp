@@ -47,9 +47,9 @@ namespace EastDeltaUniversity.Controllers
 
         //JSON Results
 
-        public JsonResult CourseByDepartment(int departmentId)
+        public JsonResult CourseDataByDepartment(int departmentId)
         {
-            var course = _courseManager.GetCoursesByDepartment(departmentId);
+            var course = _courseManager.CourseDataByDepartment(departmentId);
             return Json(course);
         }
 

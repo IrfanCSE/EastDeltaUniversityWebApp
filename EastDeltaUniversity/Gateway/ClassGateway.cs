@@ -29,6 +29,7 @@ namespace EastDeltaUniversity.Gateway
         public void Allocate(Class aClass)
         {
             _context.Classes.Add(aClass);
+            _context.SaveChanges();
         }
 
     }

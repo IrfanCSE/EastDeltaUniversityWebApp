@@ -40,6 +40,9 @@ namespace EastDeltaUniversity.Controllers
         [HttpPost]
         public ActionResult Allocate(Class aClass)
         {
+            //aClass.FromTime = aClass.FTime.TimeOfDay;
+            //aClass.ToTime = aClass.TTime.TimeOfDay;
+
             if (!ModelState.IsValid)
             {
                 ViewBag.DepartmentId = _departmentManager.GetDepartmentList();
@@ -56,12 +59,11 @@ namespace EastDeltaUniversity.Controllers
 
         //JSON Result
 
-        public JsonResult CourseByDepartment(int departmentId)
+        public JsonResult CoursesByDepartment(int departmentId)
         {
-            var course = _courseManager.GetCoursesByDepartment(departmentId);
+            var course = _courseManager.CoursesByDepartment(departmentId);
             return Json(course);
         }
-
-
+        
     }
 }

@@ -26,10 +26,10 @@ namespace EastDeltaUniversity
                       "~/Scripts/bootstrap-timepicker.js"));
 
             bundles.Add(new StyleBundle("~/Content/css").Include(
-                      "~/Content/darkly.bootstrap.css",
+                      "~/Content/bootstrap.css",
                       "~/Content/dataTables.bootstrap.min.css",
                       "~/Content/site.css",
-                      "~/Content/bootstrap-timepicker.css"
+                      "~/Content/bootstrap.timepicker.css"
                       ));
         }
     }

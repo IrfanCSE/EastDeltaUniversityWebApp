@@ -34,7 +34,7 @@ namespace EastDeltaUniversity.Gateway
             return _context.SaveChanges();
         }
 
-        public List<CourseView> GetCoursesByDepartment(int id)
+        public List<CourseView> CourseDataByDepartment(int id)
         {
             var courseList = new List<CourseView>();
             var courses =
@@ -76,6 +76,11 @@ namespace EastDeltaUniversity.Gateway
             }
 
             return courseList;
+        }
+
+        public List<Course> CoursesByDepartment(int id)
+        {
+            return _context.Courses.Where(x => x.DepartmentId == id).ToList();
         }
     }
 }
