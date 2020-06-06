@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Data.Entity;
 using System.Linq;
 using System.Web;
+using System.Web.UI.WebControls;
 using EastDeltaUniversity.Context;
 using EastDeltaUniversity.Models;
 using EastDeltaUniversity.Models.ViewModels;
@@ -44,7 +45,7 @@ namespace EastDeltaUniversity.Gateway
             foreach (var course in courseList)
             {
                 var classList=_context.Classes.Include(x => x.Course).Include(x => x.Room).Include(x => x.Day)
-                    .Where(x => x.CourseId == course.Id && x.IsActive==true).ToList();
+                    .Where(x => x.CourseId == course.Id && x.IsActive==true).OrderBy(x=>x.DayId).ToList();
                 
                 var classInfo = new ClassView()
                 {
