@@ -12,11 +12,13 @@ namespace EastDeltaUniversity.Controllers
     {
         private StudentManager _studentManager;
         private DepartmentManager _departmentManager;
+        private CourseManager _courseManager;
 
         public StudentController()
         {
             _departmentManager = new DepartmentManager();
             _studentManager = new StudentManager();
+            _courseManager = new CourseManager();
         }
 
 
@@ -25,12 +27,14 @@ namespace EastDeltaUniversity.Controllers
         //    return View();
         //}
 
+        [HttpGet]
         public ActionResult Registration()
        {
             ViewBag.DepartmentId=_departmentManager.GetDepartmentList();
             return View();
         }
 
+        [HttpPost]
         public ActionResult Save(Student student)
         {
             if (!ModelState.IsValid)
@@ -39,16 +43,49 @@ namespace EastDeltaUniversity.Controllers
                 return View("Registration");
             }
 
-          _studentManager.Save(student);
-            var s = student;
+            _studentManager.Save(student);
             return RedirectToAction("Preview",new{id=student.Id});
         }
 
+        [HttpGet]
         public ActionResult Preview(int id)
         {
             var student =_studentManager.GetStudent(id);
             return View(student);
         }
+
+        [HttpGet]
+        public ActionResult Enroll()
+        {
+            ViewBag.StudentId = _studentManager.GetStudents();
+            return View();
+        }
+
+
+
+        //JSON Result.
+
+        public JsonResult StudentById(int studentId)
+        {
+            var student = _studentManager.StudentById(studentId);
+            
+            var studentInfo = new Student()
+            {
+                Name=student.Name,
+                Email = student.Email,
+                DepartmentName=student.Department.Name,
+                DepartmentId = student.DepartmentId
+            };
+
+            return Json(studentInfo);
+        }
+
+        public JsonResult CourseByDepartment(int departmentId)
+        {
+            var course = _courseManager.CoursesByDepartment(departmentId);
+            return Json(course);
+        }
+
 
     }
 }

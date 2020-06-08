@@ -72,6 +72,5 @@ namespace EastDeltaUniversity.Gateway
             return classes;
         }
 
-
     }
 }

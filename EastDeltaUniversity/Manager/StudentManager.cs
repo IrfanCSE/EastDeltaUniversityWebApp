@@ -46,6 +46,17 @@ namespace EastDeltaUniversity.Manager
             return _studentGateway.GetStudent(id);
         }
 
+        public List<Student> GetStudents()
+        {
+            return _studentGateway.GetStudents();
+        }
+
+        public Student StudentById(int id)
+        {
+            return _studentGateway.StudentById(id);
+        }
+
+
 
     }
 }

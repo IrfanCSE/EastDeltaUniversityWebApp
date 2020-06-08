@@ -38,6 +38,8 @@ namespace EastDeltaUniversity.Models
         public ICollection<TeacherAssign> TeacherAssigns { get; set; }
 
         public ICollection<Class> Classes { get; set; }
+
+        public ICollection<StudentCourse> StudentCourses { get; set; }
     }
 
     public partial class Course:IValidatableObject

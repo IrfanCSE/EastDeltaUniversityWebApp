@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data.Entity;
 using System.Linq;
 using System.Web;
 using EastDeltaUniversity.Context;
@@ -42,6 +43,18 @@ namespace EastDeltaUniversity.Gateway
                 Contact = student.Contact,
             };
         }
+
+        public List<Student> GetStudents()
+        {
+            return _context.Students.OrderBy(x=>x.DepartmentId).ToList();
+        }
+
+        public Student StudentById(int id)
+        {
+            return _context.Students.Include(x=>x.Department).FirstOrDefault(x => x.Id == id);
+        }
+
+
 
     }
 }

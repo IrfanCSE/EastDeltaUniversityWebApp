@@ -264,6 +264,10 @@
     <Compile Include="Migrations\202005301407051_ClassTableAdded.designer.cs">
       <DependentUpon>202005301407051_ClassTableAdded.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202006070956346_StudentCourseTable.cs" />
+    <Compile Include="Migrations\202006070956346_StudentCourseTable.designer.cs">
+      <DependentUpon>202006070956346_StudentCourseTable.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Context\ApplicationDbContext.cs" />
@@ -276,6 +280,7 @@
     <Compile Include="Models\Configuration\RoomConfig.cs" />
     <Compile Include="Models\Configuration\SemesterConfig.cs" />
     <Compile Include="Models\Configuration\StudentConfig.cs" />
+    <Compile Include="Models\Configuration\StudentCourseConfig.cs" />
     <Compile Include="Models\Configuration\TeacherAssignConfig.cs" />
     <Compile Include="Models\Course.cs" />
     <Compile Include="Models\Day.cs" />
@@ -286,6 +291,7 @@
     <Compile Include="Models\Room.cs" />
     <Compile Include="Models\Semester.cs" />
     <Compile Include="Models\Student.cs" />
+    <Compile Include="Models\StudentCourse.cs" />
     <Compile Include="Models\Teacher.cs" />
     <Compile Include="Models\Configuration\TeacherConfig.cs" />
     <Compile Include="Models\TeacherAssign.cs" />
@@ -298,6 +304,14 @@
     <Compile Include="Startup.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Content\bootstrap-datepicker.css" />
+    <Content Include="Content\bootstrap-datepicker.min.css" />
+    <Content Include="Content\bootstrap-datepicker.standalone.css" />
+    <Content Include="Content\bootstrap-datepicker.standalone.min.css" />
+    <Content Include="Content\bootstrap-datepicker3.css" />
+    <Content Include="Content\bootstrap-datepicker3.min.css" />
+    <Content Include="Content\bootstrap-datepicker3.standalone.css" />
+    <Content Include="Content\bootstrap-datepicker3.standalone.min.css" />
     <Content Include="Content\bootstrap-grid.css" />
     <Content Include="Content\bootstrap-grid.min.css" />
     <Content Include="Content\bootstrap-reboot.css" />
@@ -312,6 +326,8 @@
     <Content Include="favicon.ico" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
+    <Content Include="Scripts\bootstrap-datepicker.js" />
+    <Content Include="Scripts\bootstrap-datepicker.min.js" />
     <Content Include="Scripts\bootstrap-timepicker.js" />
     <Content Include="Scripts\bootstrap-timepicker.min.js" />
     <Content Include="Scripts\bootstrap.bundle.js" />
@@ -338,6 +354,10 @@
     <Content Include="Scripts\esm\popper.js.map" />
     <Content Include="Scripts\esm\popper-utils.min.js.map" />
     <Content Include="Scripts\esm\popper-utils.js.map" />
+    <Content Include="Content\bootstrap-datepicker.css.map" />
+    <Content Include="Content\bootstrap-datepicker.standalone.css.map" />
+    <Content Include="Content\bootstrap-datepicker3.css.map" />
+    <Content Include="Content\bootstrap-datepicker3.standalone.css.map" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\dataTables.bootstrap.min.js" />
     <None Include="Scripts\jquery-3.5.1.intellisense.js" />
@@ -487,6 +507,7 @@
     <Content Include="Scripts\popper-utils.min.js.map" />
     <Content Include="Scripts\popper-utils.js.map" />
     <Content Include="Views\Class\Index.cshtml" />
+    <Content Include="Views\Student\Enroll.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -552,6 +573,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202005301407051_ClassTableAdded.resx">
       <DependentUpon>202005301407051_ClassTableAdded.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202006070956346_StudentCourseTable.resx">
+      <DependentUpon>202006070956346_StudentCourseTable.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>

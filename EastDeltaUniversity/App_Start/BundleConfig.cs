@@ -23,13 +23,15 @@ namespace EastDeltaUniversity
                       "~/Scripts/bootstrap.js",
                       "~/Scripts/respond.js",
                       "~/Scripts/dataTables.bootstrap.min.js",
-                      "~/Scripts/bootstrap-timepicker.js"));
+                      "~/Scripts/bootstrap-timepicker.js",
+                      "~/Scripts/bootstrap-datepicker.js"));
 
             bundles.Add(new StyleBundle("~/Content/css").Include(
                       "~/Content/bootstrap.css",
                       "~/Content/dataTables.bootstrap.min.css",
                       "~/Content/site.css",
-                      "~/Content/bootstrap.timepicker.css"
+                      "~/Content/bootstrap.timepicker.css",
+                      "~/Content/bootstrap-datepicker.css"
                       ));
         }
     }

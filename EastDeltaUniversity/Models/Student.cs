@@ -44,6 +44,8 @@ namespace EastDeltaUniversity.Models
         public int DepartmentId { get; set; }
         public Department Department { get; set; }
 
+        public ICollection<StudentCourse> StudentCourses { get; set; }
+
         [NotMapped]
         public string DepartmentName { get; set; }
 

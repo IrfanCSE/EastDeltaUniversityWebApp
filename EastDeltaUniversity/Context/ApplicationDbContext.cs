@@ -27,6 +27,7 @@ namespace EastDeltaUniversity.Context
         public DbSet<Day> Days { get; set; }
         public DbSet<Room> Rooms { get; set; }
         public DbSet<Class> Classes { get; set; }
+        public DbSet<StudentCourse> StudentCourses { get; set; }
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
@@ -40,6 +41,7 @@ namespace EastDeltaUniversity.Context
             modelBuilder.Configurations.Add(new DayConfig());
             modelBuilder.Configurations.Add(new RoomConfig());
             modelBuilder.Configurations.Add(new ClassConfig());
+            modelBuilder.Configurations.Add(new StudentCourseConfig());
 
             base.OnModelCreating(modelBuilder);
         }

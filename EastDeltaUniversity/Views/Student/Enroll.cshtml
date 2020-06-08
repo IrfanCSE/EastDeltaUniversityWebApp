@@ -1,0 +1,144 @@
+﻿@model EastDeltaUniversity.Models.StudentCourse
+
+@{
+    ViewBag.Title = "Enroll";
+}
+
+<h2>Enroll</h2>
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+
+    <div class="form-horizontal">
+        <h4>StudentCourse</h4>
+        <hr />
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        <div class="form-group">
+            @Html.LabelFor(model => model.StudentId, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.DropDownListFor(x => x.StudentId, new SelectList(ViewBag.StudentId, "Id", "Registration"), "--Select Registration--", new { @class = "form-control" })
+                @Html.ValidationMessageFor(model => model.StudentId, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Student.Name, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.TextBoxFor(x => x.Student.Name, new {@readonly= "readonly", @class = "form-control" })
+                @Html.ValidationMessageFor(model => model.Student.Name, "", new { @class = "text-danger" })
+            </div>
+        </div>
+        
+        <div class="form-group">
+            @Html.LabelFor(model => model.Student.Email, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.TextBoxFor(x => x.Student.Email, new { @class = "form-control" })
+                @Html.ValidationMessageFor(model => model.Student.Email, "", new { @class = "text-danger" })
+            </div>
+        </div>
+        
+        <div class="form-group">
+            @Html.LabelFor(model => model.Student.DepartmentName, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.TextBoxFor(x => x.Student.DepartmentName, new { @class = "form-control" })
+                @Html.ValidationMessageFor(model => model.Student.DepartmentName, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.CourseId, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                <select id="CourseList" name="CourseId" for="CourseId" class="form-control">
+                    <option value="">--Select Course--</option>
+                </select>
+                @Html.ValidationMessageFor(model => model.CourseId, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Date, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.TextBoxFor(x => x.Date, new { @class = "form-control" })
+                @Html.ValidationMessageFor(model => model.Date, "", new { @class = "text-danger" })
+            </div>
+        </div>
+        
+        @Html.HiddenFor(x=>x.Student.DepartmentId)
+
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Create" class="btn btn-default" />
+            </div>
+        </div>
+    </div>
+}
+
+<div>
+    @Html.ActionLink("Back to List", "Index")
+</div>
+
+@section scripts
+{
+    @Scripts.Render("~/bundles/jqueryval")
+
+<script>
+        $(function() {
+
+            //Date Picker.
+
+            $("#Date").datepicker();
+
+            //Student Information. And CourseList Along.
+
+            $("#StudentId").change(function() {
+                var studentId = $("#StudentId").val();
+                var json = { studentId: studentId };
+
+                $.ajax({
+                    type: "POST",
+                    url: '@Url.Action("StudentById", "Student")',
+                    contentType: "application/json; charset=utf-8",
+                    data: JSON.stringify(json),
+                    success: function(data) {
+
+                        $("#Student_Name").val('');
+                        $("#Student_Email").val('');
+                        $("#Student_DepartmentName").val('');
+                        $("#Student_DepartmentId").val('');
+
+                        $("#Student_Name").val(data.Name);
+                        $("#Student_Email").val(data.Email);
+                        $("#Student_DepartmentName").val(data.DepartmentName);
+                        $("#Student_DepartmentId").val(data.DepartmentId);
+
+                        //Adding Another Job CourseList.
+
+                        var departmentId = $("#Student_DepartmentId").val();
+                        var json = { departmentId: departmentId };
+
+                        $.ajax({
+                            type: "POST",
+                            url: '@Url.Action("CourseByDepartment", "Student")',
+                            contentType: "application/json; charset=utf-8",
+                            data: JSON.stringify(json),
+                            success: function(data) {
+
+                                $("#CourseList").empty();
+                                $("#CourseList").append('<option value="">--Select Course--</option>');
+
+                                $.each(data,
+                                    function(key, value) {
+                                        $("#CourseList").append('<option value="' + value.Id + '">' + value.Name + '</option>');
+                                    });
+                            }
+                        });
+                        
+                    }
+                });
+            });
+
+
+        });
+</script>
+}
