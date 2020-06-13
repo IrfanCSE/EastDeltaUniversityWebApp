@@ -297,6 +297,7 @@
     <Compile Include="Models\TeacherAssign.cs" />
     <Compile Include="Models\ViewModels\ClassView.cs" />
     <Compile Include="Models\ViewModels\CourseView.cs" />
+    <Compile Include="Models\ViewModels\StudentCourseView.cs" />
     <Compile Include="Models\ViewModels\StudentView.cs" />
     <Compile Include="Models\ViewModels\TeacherAssignView.cs" />
     <Compile Include="Models\ViewModels\TeacherView.cs" />

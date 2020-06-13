@@ -54,6 +54,11 @@ namespace EastDeltaUniversity.Gateway
             return _context.Students.Include(x=>x.Department).FirstOrDefault(x => x.Id == id);
         }
 
+        public void Enroll(StudentCourse studentCourse)
+        {
+            _context.StudentCourses.Add(studentCourse);
+            _context.SaveChanges();
+        }
 
 
     }

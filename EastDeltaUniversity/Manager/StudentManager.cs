@@ -56,6 +56,18 @@ namespace EastDeltaUniversity.Manager
             return _studentGateway.StudentById(id);
         }
 
+        public void Enroll(StudentCourseView studentCourse)
+        {
+            var student = new StudentCourse()
+            {
+                CourseId=studentCourse.CourseId,
+                StudentId=studentCourse.StudentId,
+                Date=studentCourse.Date,
+                IsActive=studentCourse.IsActive
+            };
+
+            _studentGateway.Enroll(student);
+        }
 
 
     }

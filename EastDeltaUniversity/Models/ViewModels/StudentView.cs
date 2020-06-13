@@ -30,6 +30,7 @@ namespace EastDeltaUniversity.Models.ViewModels
         [Display(Name = "Department")]
         public int DepartmentId { get; set; }
 
+        [Display(Name = "Department")]
         public string DepartmentName { get; set; }
 
     }

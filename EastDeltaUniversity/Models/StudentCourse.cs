@@ -4,10 +4,11 @@ using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Web;
+using EastDeltaUniversity.Context;
 
 namespace EastDeltaUniversity.Models
 {
-    public class StudentCourse
+    public partial class StudentCourse
     {
         public int Id { get; set; }
 
@@ -29,4 +30,5 @@ namespace EastDeltaUniversity.Models
         public bool IsActive { get; set; }
 
     }
+
 }

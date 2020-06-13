@@ -1,4 +1,4 @@
-﻿@model EastDeltaUniversity.Models.StudentCourse
+﻿@model EastDeltaUniversity.Models.ViewModels.StudentCourseView
 
 @{
     ViewBag.Title = "Enroll";
@@ -33,7 +33,7 @@
         <div class="form-group">
             @Html.LabelFor(model => model.Student.Email, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.TextBoxFor(x => x.Student.Email, new { @class = "form-control" })
+                @Html.TextBoxFor(x=>x.Student.Email, new { @readonly = "readonly", @class = "form-control"})
                 @Html.ValidationMessageFor(model => model.Student.Email, "", new { @class = "text-danger" })
             </div>
         </div>
@@ -41,7 +41,7 @@
         <div class="form-group">
             @Html.LabelFor(model => model.Student.DepartmentName, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.TextBoxFor(x => x.Student.DepartmentName, new { @class = "form-control" })
+                @Html.TextBoxFor(x => x.Student.DepartmentName, new { @readonly = "readonly", @class = "form-control" })
                 @Html.ValidationMessageFor(model => model.Student.DepartmentName, "", new { @class = "text-danger" })
             </div>
         </div>
@@ -59,16 +59,17 @@
         <div class="form-group">
             @Html.LabelFor(model => model.Date, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.TextBoxFor(x => x.Date, new { @class = "form-control" })
+                @Html.TextBoxFor(x => x.Date, new {@autocomplete="off", @class = "form-control" })
                 @Html.ValidationMessageFor(model => model.Date, "", new { @class = "text-danger" })
             </div>
         </div>
         
         @Html.HiddenFor(x=>x.Student.DepartmentId)
+        @Html.HiddenFor(x=>x.IsActive)
 
         <div class="form-group">
             <div class="col-md-offset-2 col-md-10">
-                <input type="submit" value="Create" class="btn btn-default" />
+                <input id="Submit-Enroll" type="submit" value="Create" class="btn btn-default" />
             </div>
         </div>
     </div>
@@ -82,7 +83,7 @@
 {
     @Scripts.Render("~/bundles/jqueryval")
 
-<script>
+    <script>
         $(function() {
 
             //Date Picker.
@@ -112,7 +113,7 @@
                         $("#Student_DepartmentName").val(data.DepartmentName);
                         $("#Student_DepartmentId").val(data.DepartmentId);
 
-                        //Adding Another Job CourseList.
+                        //Adding Another-Job CourseList.
 
                         var departmentId = $("#Student_DepartmentId").val();
                         var json = { departmentId: departmentId };
@@ -133,12 +134,18 @@
                                     });
                             }
                         });
-                        
+
                     }
                 });
             });
 
+            // Added Active True Value For Student-Course Table.
+
+            $("#Submit-Enroll").click(function() {
+                $("#IsActive").val(true);
+            });
+
 
         });
-</script>
+    </script>
 }

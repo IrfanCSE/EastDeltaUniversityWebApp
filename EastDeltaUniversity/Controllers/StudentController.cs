@@ -5,6 +5,7 @@ using System.Web;
 using System.Web.Mvc;
 using EastDeltaUniversity.Manager;
 using EastDeltaUniversity.Models;
+using EastDeltaUniversity.Models.ViewModels;
 
 namespace EastDeltaUniversity.Controllers
 {
@@ -59,6 +60,20 @@ namespace EastDeltaUniversity.Controllers
         {
             ViewBag.StudentId = _studentManager.GetStudents();
             return View();
+        }
+
+        [HttpPost]
+        public ActionResult Enroll(StudentCourseView studentCourse)
+        {
+            if (!ModelState.IsValid)
+            {
+                ViewBag.StudentId = _studentManager.GetStudents();
+                return View("Enroll",studentCourse);
+            }
+
+            _studentManager.Enroll(studentCourse);
+
+            return RedirectToAction("Enroll","Student");
         }
 
 
