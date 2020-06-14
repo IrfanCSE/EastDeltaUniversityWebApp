@@ -1,14 +1,9 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
-using System.ComponentModel.DataAnnotations.Schema;
-using System.Linq;
-using System.Web;
-using EastDeltaUniversity.Context;
 
 namespace EastDeltaUniversity.Models
 {
-    public partial class StudentCourse
+    public class StudentCourse
     {
         public int Id { get; set; }
 

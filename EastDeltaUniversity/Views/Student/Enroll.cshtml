@@ -49,7 +49,7 @@
         <div class="form-group">
             @Html.LabelFor(model => model.CourseId, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                <select id="CourseList" name="CourseId" for="CourseId" class="form-control">
+                <select id="CourseList" name="CourseId" for="CourseId" class="form-control required">
                     <option value="">--Select Course--</option>
                 </select>
                 @Html.ValidationMessageFor(model => model.CourseId, "", new { @class = "text-danger" })
@@ -88,7 +88,13 @@
 
             //Date Picker.
 
-            $("#Date").datepicker();
+            $("#Date").datepicker({
+                autoclose: true,
+                todayHighlight: true,
+                weekStart: 6,
+                daysOfWeekHighlighted: "5",
+                orientation: "auto right"
+            });
 
             //Student Information. And CourseList Along.
 
