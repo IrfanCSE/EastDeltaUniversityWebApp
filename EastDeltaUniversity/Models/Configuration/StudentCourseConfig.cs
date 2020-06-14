@@ -28,6 +28,11 @@ namespace EastDeltaUniversity.Models.Configuration
 
             Property(x => x.IsActive)
                 .IsRequired();
+
+            HasRequired(x=>x.Grade)
+                .WithMany(x=>x.StudentCourses)
+                .HasForeignKey(x=>x.GradeId)
+                .WillCascadeOnDelete(false);
         }
     }
 }

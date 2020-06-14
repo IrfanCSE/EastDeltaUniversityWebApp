@@ -69,6 +69,29 @@ namespace EastDeltaUniversity.Manager
             _studentGateway.Enroll(student);
         }
 
+        public List<Course> CoursesByStudent(int id)
+        {
+            var Courses= _studentGateway.CoursesByStudent(id);
+            var courseList=new List<Course>();
+            foreach (var course in Courses)
+            {
+                var courseInfo = new Course()
+                {
+                    Id=course.Course.Id,
+                    Code = course.Course.Code,
+                    Name = course.Course.Name
+                };
+                courseList.Add(courseInfo);
+            }
+
+            return courseList;
+        }
+
+        public List<Grade> Grades()
+        {
+            return _studentGateway.Grades();
+        }
+
 
     }
 }

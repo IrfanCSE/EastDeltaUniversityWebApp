@@ -24,6 +24,10 @@ namespace EastDeltaUniversity.Models
         [Required]
         public bool IsActive { get; set; }
 
+        [Display(Name = "Grade")]
+        public int? GradeId { get; set; }
+        public Grade Grade { get; set; }
+
     }
 
 }

@@ -28,6 +28,7 @@ namespace EastDeltaUniversity.Context
         public DbSet<Room> Rooms { get; set; }
         public DbSet<Class> Classes { get; set; }
         public DbSet<StudentCourse> StudentCourses { get; set; }
+        public DbSet<Grade> Grades { get; set; }
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
@@ -42,6 +43,7 @@ namespace EastDeltaUniversity.Context
             modelBuilder.Configurations.Add(new RoomConfig());
             modelBuilder.Configurations.Add(new ClassConfig());
             modelBuilder.Configurations.Add(new StudentCourseConfig());
+            modelBuilder.Configurations.Add(new GradeConfig());
 
             base.OnModelCreating(modelBuilder);
         }

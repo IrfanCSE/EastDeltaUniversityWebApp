@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using EastDeltaUniversity.Context;
 
@@ -22,6 +23,12 @@ namespace EastDeltaUniversity.Models.ViewModels
         public DateTime Date { get; set; }
 
         public bool IsActive { get; set; }
+
+        [Display(Name = "Grade")]
+        public int? GradeId { get; set; }
+        public Grade Grade { get; set; }
+
+        public bool Grading { get; set; }
     }
 
     public partial class StudentCourseView : IValidatableObject
@@ -29,6 +36,12 @@ namespace EastDeltaUniversity.Models.ViewModels
         public IEnumerable<ValidationResult> Validate(ValidationContext validationContext)
         {
             var result = new List<ValidationResult>();
+
+            if (Grading==true)
+            {
+                return result;
+            }
+            
             var _context = new ApplicationDbContext();
 
             var student = _context.StudentCourses.FirstOrDefault(x =>

@@ -76,6 +76,14 @@ namespace EastDeltaUniversity.Controllers
             return RedirectToAction("Enroll","Student");
         }
 
+        [HttpGet]
+        public ActionResult Grading()
+        {
+            ViewBag.StudentId = _studentManager.GetStudents();
+            ViewBag.GradeId = _studentManager.Grades();
+            return View();
+        }
+
 
 
         //JSON Result.
@@ -99,6 +107,12 @@ namespace EastDeltaUniversity.Controllers
         {
             var course = _courseManager.CoursesByDepartment(departmentId);
             return Json(course);
+        }
+
+        public JsonResult CoursesByStudent(int studentId)
+        {
+            var courses=_studentManager.CoursesByStudent(studentId);
+            return Json(courses);
         }
 
 
