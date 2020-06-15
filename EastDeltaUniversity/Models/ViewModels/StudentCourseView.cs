@@ -37,12 +37,20 @@ namespace EastDeltaUniversity.Models.ViewModels
         {
             var result = new List<ValidationResult>();
 
+            var _context = new ApplicationDbContext();
+
             if (Grading==true)
             {
+                //var IsGraded = _context.StudentCourses.Where(x =>
+                //    x.StudentId == StudentId && x.CourseId == CourseId &&
+                //    x.IsActive == true && x.GradeId != null).Single();
+
+                //if (IsGraded != null)
+                //{
+                //    result.Add(new ValidationResult("Course Already Graded for this student",new []{"CourseId"}));
+                //}
                 return result;
             }
-            
-            var _context = new ApplicationDbContext();
 
             var student = _context.StudentCourses.FirstOrDefault(x =>
                 x.StudentId == StudentId && x.CourseId == CourseId && x.IsActive == true);

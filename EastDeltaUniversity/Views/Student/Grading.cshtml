@@ -56,14 +56,16 @@
     <div class="form-group">
         @Html.LabelFor(model => model.GradeId,new{ @class = "control-label col-md-2" })
         <div class="col-md-10">
-            @Html.DropDownListFor(x => x.GradeId, new SelectList(ViewBag.GradeId, "Id", "Letter"), "--Select Grade--", new{ @class = "form-control" })
+            @Html.DropDownListFor(x => x.GradeId, new SelectList(ViewBag.GradeId, "Id", "Letter"), "--Select Grade--", new{required="required", @class = "form-control" })
             @Html.ValidationMessageFor(model => model.GradeId, "", new { @class = "text-danger" })
         </div>
     </div>
+    
+    @Html.HiddenFor(x=>x.Grading)
 
     <div class="form-group">
         <div class="col-md-offset-2 col-md-10">
-            <input type="submit" value="Submit" class="btn btn-default" />
+            <input id="Submit-Grading" type="submit" value="Submit" class="btn btn-default" />
         </div>
     </div>
 </div>
@@ -81,52 +83,58 @@
 
         //Student Information. And CourseList Along.
 
-            $("#StudentId").change(function() {
-                var studentId = $("#StudentId").val();
-                var json = { studentId: studentId };
+        $("#StudentId").change(function() {
+            var studentId = $("#StudentId").val();
+            var json = { studentId: studentId };
 
-                $.ajax({
-                    type: "POST",
-                    url: '@Url.Action("StudentById", "Student")',
-                    contentType: "application/json; charset=utf-8",
-                    data: JSON.stringify(json),
-                    success: function(data) {
+            $.ajax({
+                type: "POST",
+                url: '@Url.Action("StudentById", "Student")',
+                contentType: "application/json; charset=utf-8",
+                data: JSON.stringify(json),
+                success: function(data) {
 
-                        $("#Student_Name").val('');
-                        $("#Student_Email").val('');
-                        $("#Student_DepartmentName").val('');
-                        $("#Student_DepartmentId").val('');
+                    $("#Student_Name").val('');
+                    $("#Student_Email").val('');
+                    $("#Student_DepartmentName").val('');
+                    $("#Student_DepartmentId").val('');
 
-                        $("#Student_Name").val(data.Name);
-                        $("#Student_Email").val(data.Email);
-                        $("#Student_DepartmentName").val(data.DepartmentName);
-                        $("#Student_DepartmentId").val(data.DepartmentId);
+                    $("#Student_Name").val(data.Name);
+                    $("#Student_Email").val(data.Email);
+                    $("#Student_DepartmentName").val(data.DepartmentName);
+                    $("#Student_DepartmentId").val(data.DepartmentId);
 
-                        //Adding Another-Job CourseList.
+                    //Adding Another-Job CourseList.
 
-                        var studentId = $("#StudentId").val();
-                        var json = { studentId: studentId };
+                    var studentId = $("#StudentId").val();
+                    var json = { studentId: studentId };
 
-                        $.ajax({
-                            type: "POST",
-                            url: '@Url.Action("CoursesByStudent", "Student")',
-                            contentType: "application/json; charset=utf-8",
-                            data: JSON.stringify(json),
-                            success: function(data) {
+                    $.ajax({
+                        type: "POST",
+                        url: '@Url.Action("CoursesByStudent", "Student")',
+                        contentType: "application/json; charset=utf-8",
+                        data: JSON.stringify(json),
+                        success: function(data) {
 
-                                $("#CourseList").empty();
-                                $("#CourseList").append('<option value="">--Select Course--</option>');
+                            $("#CourseList").empty();
+                            $("#CourseList").append('<option value="">--Select Course--</option>');
 
-                                $.each(data,
-                                    function(key, value) {
-                                        $("#CourseList").append('<option value="' + value.Id + '">' + value.Name + '</option>');
-                                    });
-                            }
-                        });
+                            $.each(data,
+                                function(key, value) {
+                                    $("#CourseList").append('<option value="' + value.Id + '">' + value.Name + '</option>');
+                                });
+                        }
+                    });
 
-                    }
-                });
+                }
             });
+        });
+
+        // Submit.
+
+        $("#Submit-Grading").click(function() {
+            $("#Grading").val(true);
+        });
 
     </script>
 }

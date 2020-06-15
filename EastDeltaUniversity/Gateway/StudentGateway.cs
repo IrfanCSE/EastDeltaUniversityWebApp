@@ -70,6 +70,15 @@ namespace EastDeltaUniversity.Gateway
             return _context.Grades.ToList();
         }
 
+        public void Grading(StudentCourse studentCourse)
+        {
+            var course = _context.StudentCourses.FirstOrDefault(x =>
+                x.StudentId == studentCourse.StudentId && x.CourseId == studentCourse.CourseId && x.IsActive == true);
+
+            if (course != null) course.GradeId = studentCourse.GradeId;
+
+            _context.SaveChanges();
+        }
 
 
     }

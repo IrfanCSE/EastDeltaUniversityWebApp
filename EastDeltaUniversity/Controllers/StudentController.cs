@@ -84,6 +84,23 @@ namespace EastDeltaUniversity.Controllers
             return View();
         }
 
+        [HttpPost]
+        public ActionResult Grading(StudentCourseView studentCourse)
+        {
+            if (!ModelState.IsValid)
+            {
+                ViewBag.StudentId = _studentManager.GetStudents();
+                ViewBag.GradeId = _studentManager.Grades();
+
+                return View("Grading",studentCourse);
+            }
+
+            _studentManager.Grading(studentCourse);
+
+            return RedirectToAction("Grading", "Student");
+        }
+
+
 
 
         //JSON Result.

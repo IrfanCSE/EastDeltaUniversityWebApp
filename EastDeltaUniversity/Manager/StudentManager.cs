@@ -92,6 +92,18 @@ namespace EastDeltaUniversity.Manager
             return _studentGateway.Grades();
         }
 
+        public void Grading(StudentCourseView studentCourse)
+        {
+            var courseGrade = new StudentCourse()
+            {
+                CourseId=studentCourse.CourseId,
+                StudentId = studentCourse.StudentId,
+                GradeId = studentCourse.GradeId
+            };
+            _studentGateway.Grading(courseGrade);
+        }
+
+
 
     }
 }
