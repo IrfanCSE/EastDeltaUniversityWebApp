@@ -80,6 +80,13 @@ namespace EastDeltaUniversity.Gateway
             _context.SaveChanges();
         }
 
+        public List<StudentCourse> GradeByStudent(int studentId)
+        {
+            return _context.StudentCourses.Where(x => x.StudentId == studentId && x.IsActive == true)
+                .Include(x => x.Course)
+                .Include(x => x.Grade).ToList();
+        }
+
 
     }
 }

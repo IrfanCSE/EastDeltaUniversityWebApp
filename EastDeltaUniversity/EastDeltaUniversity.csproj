@@ -524,6 +524,7 @@
     <Content Include="Views\Class\Index.cshtml" />
     <Content Include="Views\Student\Enroll.cshtml" />
     <Content Include="Views\Student\Grading.cshtml" />
+    <Content Include="Views\Student\ViewGrade.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

@@ -103,7 +103,11 @@ namespace EastDeltaUniversity.Manager
             _studentGateway.Grading(courseGrade);
         }
 
+        public List<StudentCourse> GradeByStudent(int studentId)
+        {
+            var courseList = _studentGateway.GradeByStudent(studentId);
 
+        }
 
     }
 }

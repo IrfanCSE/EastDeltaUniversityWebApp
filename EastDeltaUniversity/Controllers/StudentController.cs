@@ -100,6 +100,13 @@ namespace EastDeltaUniversity.Controllers
             return RedirectToAction("Grading", "Student");
         }
 
+        public ActionResult ViewGrade()
+        {
+            ViewBag.StudentId = _studentManager.GetStudents();
+
+            return View();
+        }
+
 
 
 
@@ -130,6 +137,11 @@ namespace EastDeltaUniversity.Controllers
         {
             var courses=_studentManager.CoursesByStudent(studentId);
             return Json(courses);
+        }
+
+        public JsonResult GradeByStudentId(int studentId)
+        {
+            return Json();
         }
 
 

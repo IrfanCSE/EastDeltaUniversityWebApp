@@ -1,0 +1,115 @@
+﻿@model EastDeltaUniversity.Models.ViewModels.StudentCourseView
+
+@{
+    ViewBag.Title = "ViewGrade";
+}
+
+<h2>ViewGrade</h2>
+
+<div class="container">
+
+    <h4>Student Grade</h4>
+    <hr/>
+    <div class="form-group">
+        @Html.LabelFor(x => x.StudentId, new {@class = "col-form-label col-md-2"})
+        <div class="col-md-10">
+            @Html.DropDownListFor(x => x.StudentId, new SelectList(ViewBag.StudentId, "Id", "Registration"), "--Select Registration--", new {@class = "form-control"})
+            @Html.ValidationMessageFor(x => x.StudentId, "", new {@class = "text-danger"})
+        </div>
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(x => x.Student.Name, new {@class = "col-form-label col-md-2"})
+        <div class="col-md-10">
+            @Html.TextBoxFor(x => x.Student.Name, new {@readonly = "readonly", @class = "form-control"})
+        </div>
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(x => x.Student.Email, new {@class = "col-form-label col-md-2"})
+        <div class="col-md-10">
+            @Html.TextBoxFor(x => x.Student.Email, new {@readonly = "readonly", @class = "form-control"})
+        </div>
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(x => x.Student.DepartmentName, new {@class = "col-form-label col-md-2"})
+        <div class="col-md-10">
+            @Html.TextBoxFor(x => x.Student.DepartmentName, new {@readonly = "readonly", @class = "form-control"})
+        </div>
+    </div>
+
+</div>
+
+<div class="container">
+    <table class="table table-striped table-bordered table-hover">
+        <thead class="text-center">
+        <tr>
+            <th class="col-md-3">Course Code</th>
+            <th class="col-md-3">Name</th>
+            <th class="col-md-3">Grade</th>
+        </tr>
+        </thead>
+        
+        <tbody id="Course-Grade"></tbody>
+
+    </table>
+</div>
+
+
+
+@section scripts
+{
+    <script>
+
+        $(function() {
+
+            //Get Student Data By Student Id.
+
+            $("#StudentId").change(function () {
+                var studentId = $("#StudentId").val();
+                var json = { studentId: studentId };
+
+                $.ajax({
+                    type: "POST",
+                    url: '@Url.Action("StudentById", "Student")',
+                    contentType: "application/json; charset=utf-8",
+                    data: JSON.stringify(json),
+                    success: function (data) {
+
+                        $("#Student_Name").val('');
+                        $("#Student_Email").val('');
+                        $("#Student_DepartmentName").val('');
+
+                        $("#Student_Name").val(data.Name);
+                        $("#Student_Email").val(data.Email);
+                        $("#Student_DepartmentName").val(data.DepartmentName);
+
+                        // Fill-Up Table Against Student Id.
+
+                        var studentId = $("#StudentId").val();
+                        var json = { studentId: studentId };
+
+                        $.ajax({
+                            type: "POST",
+                            url: '@Url.Action("GradeByStudentId", "Student")',
+                            contentType: "application/json; charset=utf-8",
+                            data: JSON.stringify(json),
+                            success: function (data) {
+
+                                $("#Course-Grade").empty();
+
+                                $.each(data, function (key, value) {
+                                    $("#Course-Grade").append('<tr> <td>' + value.Code + '</td> <td>' + value.Name + '</td> <td>' + value.Letter +'</td> </tr>');
+                                });
+                            }
+                        });
+
+                    }
+                });
+            });
+
+        });
+
+    </script>
+}
