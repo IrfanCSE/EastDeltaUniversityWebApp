@@ -103,10 +103,23 @@ namespace EastDeltaUniversity.Manager
             _studentGateway.Grading(courseGrade);
         }
 
-        public List<StudentCourse> GradeByStudent(int studentId)
+        public List<CourseView> GradeByStudent(int studentId)
         {
-            var courseList = _studentGateway.GradeByStudent(studentId);
+            var CourseList = _studentGateway.GradeByStudent(studentId);
 
+            var courses = new List<CourseView>();
+
+            foreach (var Course in CourseList)
+            {
+                courses.Add(new CourseView()
+                {
+                    Code=Course.Course.Code,
+                    Name = Course.Course.Name,
+                    Grade = Course.Grade.Letter
+                });
+            }
+
+            return courses;
         }
 
     }

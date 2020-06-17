@@ -141,7 +141,8 @@ namespace EastDeltaUniversity.Controllers
 
         public JsonResult GradeByStudentId(int studentId)
         {
-            return Json();
+            var grade = _studentManager.GradeByStudent(studentId);
+            return Json(grade);
         }
 
 

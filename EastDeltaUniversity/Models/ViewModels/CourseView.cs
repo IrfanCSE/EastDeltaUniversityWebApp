@@ -25,5 +25,8 @@ namespace EastDeltaUniversity.Models.ViewModels
 
         public int TeacherId { get; set; }
         public string TeacherName { get; set; }
+
+        public int GradeId { get; set; }
+        public string Grade { get; set; }
     }
 }

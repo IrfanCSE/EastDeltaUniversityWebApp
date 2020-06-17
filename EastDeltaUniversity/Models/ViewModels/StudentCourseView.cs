@@ -29,6 +29,8 @@ namespace EastDeltaUniversity.Models.ViewModels
         public Grade Grade { get; set; }
 
         public bool Grading { get; set; }
+
+        public CourseView CourseView { get; set; }
     }
 
     public partial class StudentCourseView : IValidatableObject
