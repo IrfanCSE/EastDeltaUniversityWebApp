@@ -6,56 +6,107 @@
 
 <h2>ViewGrade</h2>
 
-<div class="container">
+<div>
 
     <h4>Student Grade</h4>
     <hr/>
-    <div class="form-group">
-        @Html.LabelFor(x => x.StudentId, new {@class = "col-form-label col-md-2"})
-        <div class="col-md-10">
-            @Html.DropDownListFor(x => x.StudentId, new SelectList(ViewBag.StudentId, "Id", "Registration"), "--Select Registration--", new {@class = "form-control"})
-            @Html.ValidationMessageFor(x => x.StudentId, "", new {@class = "text-danger"})
+    @using (Html.BeginForm())
+    {
+        <div class="form-group">
+            @Html.LabelFor(x => x.StudentId, new {@class = "col-form-label col-md-2"})
+            <div class="col-md-10">
+                @Html.DropDownListFor(x => x.StudentId, new SelectList(ViewBag.StudentId, "Id", "Registration"), "--Select Registration--", new {@class = "form-control"})
+                @Html.ValidationMessageFor(x => x.StudentId, "", new {@class = "text-danger"})
+            </div>
         </div>
-    </div>
 
-    <div class="form-group">
-        @Html.LabelFor(x => x.Student.Name, new {@class = "col-form-label col-md-2"})
-        <div class="col-md-10">
-            @Html.TextBoxFor(x => x.Student.Name, new {@readonly = "readonly", @class = "form-control"})
+        <div class="form-group">
+            @Html.LabelFor(x => x.Student.Name, new {@class = "col-form-label col-md-2"})
+            <div class="col-md-10">
+                @Html.TextBoxFor(x => x.Student.Name, new {@readonly = "readonly", @class = "form-control"})
+            </div>
         </div>
-    </div>
 
-    <div class="form-group">
-        @Html.LabelFor(x => x.Student.Email, new {@class = "col-form-label col-md-2"})
-        <div class="col-md-10">
-            @Html.TextBoxFor(x => x.Student.Email, new {@readonly = "readonly", @class = "form-control"})
+        <div class="form-group">
+            @Html.LabelFor(x => x.Student.Email, new {@class = "col-form-label col-md-2"})
+            <div class="col-md-10">
+                @Html.TextBoxFor(x => x.Student.Email, new {@readonly = "readonly", @class = "form-control"})
+            </div>
         </div>
-    </div>
 
-    <div class="form-group">
-        @Html.LabelFor(x => x.Student.DepartmentName, new {@class = "col-form-label col-md-2"})
-        <div class="col-md-10">
-            @Html.TextBoxFor(x => x.Student.DepartmentName, new {@readonly = "readonly", @class = "form-control"})
+        <div class="form-group">
+            @Html.LabelFor(x => x.Student.DepartmentName, new {@class = "col-form-label col-md-2"})
+            <div class="col-md-10">
+                @Html.TextBoxFor(x => x.Student.DepartmentName, new {@readonly = "readonly", @class = "form-control"})
+            </div>
         </div>
-    </div>
 
-</div>
+        <div class="col-md-offset-2">
+            <input id="Print-Button" type="submit" value="Print" class="btn btn-success col-md-2" />
+        </div>
+    }
 
-<div class="container">
     <table class="table table-striped table-bordered table-hover">
-        <thead class="text-center">
+        <thead>
         <tr>
-            <th class="col-md-3">Course Code</th>
-            <th class="col-md-3">Name</th>
-            <th class="col-md-3">Grade</th>
+            <th class="col-md-3 text-center">Course Code</th>
+            <th class="col-md-3 text-center">Name</th>
+            <th class="col-md-3 text-center">Grade</th>
         </tr>
         </thead>
         
-        <tbody id="Course-Grade"></tbody>
+        <tbody id="Course-Grade" class="text-center"></tbody>
 
     </table>
 </div>
 
+<div id="printContent">
+    <div id="printPage" align="center" class="hidden">
+
+        <div class="align-content-center">
+            <img class="img-responsive" src="~/Content/Images/EduLogo.jpg" />
+            <h3 class="h3">Academic Transcript</h3>
+            <hr />
+        </div>
+        <div class="form-group">
+            <table width="100%">
+                <tr>
+                    <td width="30%">Student Name</td>
+                    <td width="70%"><label id="printName" style="font-weight: bold;"></label></td>
+                </tr>
+                <tr>
+                    <td>Student Email</td>
+                    <td><label id="printEmail"></label></td>
+                </tr>
+                <tr>
+                    <td>Student Department</td>
+                    <td><label id="printDepartment"></label></td>
+                </tr>
+            </table>
+        </div>
+
+        <table class="table table-bordered" style="border: 1px solid black; width: 100%; border-collapse: collapse; margin-bottom: 100px;">
+            <thead>
+            <tr>
+                <th style="border: 1px solid black;">Course Code</th>
+                <th style="border: 1px solid black;">Name</th>
+                <th style="border: 1px solid black;">Grade</th>
+            </tr>
+            </thead>
+
+            <tbody id="Course-Grade-hidden" style="text-align: center"></tbody>
+
+        </table>
+
+        <table width="100%">
+            <tr>
+                <td><p style="text-align: left;">Date  of Publication of Result: @DateTime.Now.ToString("dd-MM-yyyy")</p></td>
+                <td><h4 style="text-align: right;">Controller of Examination</h4></td>
+            </tr>
+        </table>
+
+    </div>
+</div>
 
 
 @section scripts
@@ -66,7 +117,7 @@
 
             //Get Student Data By Student Id.
 
-            $("#StudentId").change(function () {
+            $("#StudentId").change(function() {
                 var studentId = $("#StudentId").val();
                 var json = { studentId: studentId };
 
@@ -75,15 +126,21 @@
                     url: '@Url.Action("StudentById", "Student")',
                     contentType: "application/json; charset=utf-8",
                     data: JSON.stringify(json),
-                    success: function (data) {
+                    success: function(data) {
 
                         $("#Student_Name").val('');
+                        $("#printName").text('');
                         $("#Student_Email").val('');
+                        $("#printEmail").text('');
                         $("#Student_DepartmentName").val('');
+                        $("#printDepartmentName").text('');
 
                         $("#Student_Name").val(data.Name);
+                        $("#printName").text(data.Name);
                         $("#Student_Email").val(data.Email);
+                        $("#printEmail").text(data.Email);
                         $("#Student_DepartmentName").val(data.DepartmentName);
+                        $("#printDepartment").text(data.DepartmentName);
 
                         // Fill-Up Table Against Student Id.
 
@@ -95,18 +152,41 @@
                             url: '@Url.Action("GradeByStudentId", "Student")',
                             contentType: "application/json; charset=utf-8",
                             data: JSON.stringify(json),
-                            success: function (data) {
+                            success: function(data) {
 
                                 $("#Course-Grade").empty();
+                                $("#Course-Grade-hidden").empty();
 
-                                $.each(data, function (key, value) {
-                                    $("#Course-Grade").append('<tr> <td>' + value.Code + '</td> <td>' + value.Name + '</td> <td>' + value.Grade + '</td> </tr>');
-                                });
+                                $.each(data,
+                                    function(key, value) {
+                                        $("#Course-Grade").append('<tr> <td>' + value.Code + '</td> <td>' + value.Name + '</td> <td>' + value.Grade + '</td> </tr>');
+                                        $("#Course-Grade-hidden").append('<tr> <td>' + value.Code + '</td> <td>' + value.Name + '</td> <td>' + value.Grade + '</td> </tr>');
+                                    });
                             }
                         });
 
                     }
                 });
+            });
+
+            //Print Function
+
+            $("#Print-Button").click(function () {
+                var studentId = $("#StudentId").val();
+                if (studentId == '') {
+                    return false;
+                }
+
+                var printDoc = document.getElementById('printContent');
+                var printWindow = window.open('left=300,top=100,width=400,height=400');
+                printWindow.document.write(printDoc.innerHTML);
+                printWindow.document.getElementById('printPage').style.display = 'block';
+                printWindow.document.close();
+                printWindow.focus();
+                printWindow.print();
+                printWindow.close();
+
+                return false;
             });
 
         });
