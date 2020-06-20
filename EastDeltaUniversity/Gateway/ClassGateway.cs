@@ -72,5 +72,17 @@ namespace EastDeltaUniversity.Gateway
             return classes;
         }
 
+        public void Unassign()
+        {
+            var classes=_context.Classes.Where(x => x.IsActive == true).ToList();
+            foreach (var cClass in classes)
+            {
+                cClass.IsActive = false;
+                cClass.UpdateMode = true;
+                _context.SaveChanges();
+            }
+        }
+
+
     }
 }

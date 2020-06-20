@@ -50,6 +50,9 @@ namespace EastDeltaUniversity.Models
         [Display(Name ="To")]
         [DataType(DataType.Time)]
         public DateTime TTime { get; set; }
+
+        [NotMapped]
+        public bool UpdateMode { get; set; }
     }
 
     public partial class Class:IValidatableObject
@@ -58,6 +61,9 @@ namespace EastDeltaUniversity.Models
         {
             var result = new List<ValidationResult>();
             var _context = new ApplicationDbContext();
+
+            if (UpdateMode == true)
+                return result;
 
             FromTime = FTime.TimeOfDay;
             ToTime = TTime.TimeOfDay;

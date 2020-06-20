@@ -38,6 +38,11 @@ namespace EastDeltaUniversity.Manager
             return _classGateway.ClassInfo(departmentId);
         }
 
+        public void Unassign()
+        {
+            _classGateway.Unassign();
+        }
+
 
     }
 }

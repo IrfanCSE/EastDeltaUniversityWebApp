@@ -527,6 +527,7 @@
     <Content Include="Views\Student\Grading.cshtml" />
     <Content Include="Views\Student\ViewGrade.cshtml" />
     <Content Include="Views\Course\Unassign.cshtml" />
+    <Content Include="Views\Class\Unassign.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

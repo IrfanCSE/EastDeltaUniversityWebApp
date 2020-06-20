@@ -95,12 +95,12 @@ namespace EastDeltaUniversity.Gateway
             foreach (var assign in teachersAssigns)
             {
                 var teacher=_context.Teachers.FirstOrDefault(x => x.Id == assign.TeacherId);
-                if (teacher != null)
-                {
-                    teacher.CreditTaken = Zero;
-                    teacher.EditMode = true;
-                    _context.SaveChanges();
-                }
+                
+                if (teacher == null) continue;
+                
+                teacher.CreditTaken = Zero;
+                teacher.EditMode = true;
+                _context.SaveChanges();
             }
         }
     }
