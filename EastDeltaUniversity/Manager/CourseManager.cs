@@ -11,10 +11,12 @@ namespace EastDeltaUniversity.Manager
     public class CourseManager
     {
         private CourseGateway _courseGateway;
+        private TeacherGateway _teacherGateway;
 
         public CourseManager()
         {
             _courseGateway = new CourseGateway();
+            _teacherGateway = new TeacherGateway();
         }
 
         public List<Semester> GetSemesters()
@@ -45,5 +47,11 @@ namespace EastDeltaUniversity.Manager
             return _courseGateway.CoursesByDepartment(id);
         }
 
+        public void Unassign()
+        {
+            _courseGateway.UnassignCourses();
+            _teacherGateway.ResetTeacherCredit();
+            _teacherGateway.UnassignTeacher();
+        }
     }
 }

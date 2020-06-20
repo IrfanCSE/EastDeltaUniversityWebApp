@@ -17,7 +17,7 @@ namespace EastDeltaUniversity.Gateway
             _context = new ApplicationDbContext();
         }
 
-        //Constatn Field
+        // Constant Field
         private const int Zero = 0;
 
         
@@ -36,51 +36,52 @@ namespace EastDeltaUniversity.Gateway
 
         public List<CourseView> CourseDataByDepartment(int id)
         {
-            var courseList = new List<CourseView>();
-            var courses =
-                _context.Courses.Include(x => x.Semester)
-                    .Include(x => x.TeacherAssigns)
-                    .Where(x => x.DepartmentId == id)
-                    .ToList();
-
-            foreach (var course in courses)
+            var courseInfo = new List<CourseView>();
+            
+            var courseList = _context.Courses.Where(x => x.DepartmentId == id).Include(x=>x.Semester).ToList();
+            
+            foreach (var course in courseList)
             {
-                if (course.TeacherAssigns.Count != Zero)
+                var assign = _context.TeacherAssigns.Where(x => x.CourseId == course.Id && x.IsActive == true).Include(x=>x.Teacher).FirstOrDefault();
+                
+                var data = new CourseView
                 {
-                    foreach (var teachers in course.TeacherAssigns)
-                    {
-                        var teacher = _context.Teachers.FirstOrDefault(x => x.Id == teachers.TeacherId);
-
-                        var data = new CourseView()
-                        {
-                            Code = course.Code,
-                            Name = course.Name,
-                            SemesterName = course.Semester.Name,
-                            TeacherName = teacher.Name
-                        };
-                        courseList.Add(data);
-                    }
-
+                    Code = course.Code, 
+                    Name = course.Name, 
+                    SemesterName = course.Semester.Name
+                };
+                
+                if (assign != null)
+                {
+                    data.TeacherName = assign.Teacher.Name;
+                    courseInfo.Add(data);
                 }
                 else
                 {
-                    var data = new CourseView()
-                    {
-                        Code = course.Code,
-                        Name = course.Name,
-                        SemesterName = course.Semester.Name,
-                        TeacherName = "Not Assigned Yet"
-                    };
-                    courseList.Add(data);
+                    data.TeacherName = "Not Assigned Yet";
+                    courseInfo.Add(data);
                 }
             }
 
-            return courseList;
+            return courseInfo;
         }
 
         public List<Course> CoursesByDepartment(int id)
         {
             return _context.Courses.Where(x => x.DepartmentId == id).ToList();
         }
+
+        public void UnassignCourses()
+        {
+            var courses=_context.StudentCourses.Where(x => x.IsActive == true).ToList();
+            foreach (var course in courses)
+            {
+                course.IsActive = false;
+            }
+
+            _context.SaveChanges();
+        }
+        
+
     }
 }

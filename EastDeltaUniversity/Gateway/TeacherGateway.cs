@@ -20,6 +20,12 @@ namespace EastDeltaUniversity.Gateway
             _context = new ApplicationDbContext();
         }
 
+        // Constant Field
+        private const int Zero = 0;
+
+        
+        // Methods
+
         public List<Designation> GetDesignations()
         {
             return _context.Designations.ToList();
@@ -67,6 +73,34 @@ namespace EastDeltaUniversity.Gateway
                 teacher.EditMode = true;
                 //_context.Entry(teacher).State=EntityState.Modified;
                 _context.SaveChanges();
+            }
+        }
+
+        public void UnassignTeacher()
+        {
+            var teachers = _context.TeacherAssigns.Where(x => x.IsActive == true).ToList();
+
+            foreach (var teacher in teachers)
+            {
+                teacher.IsActive = false;
+                teacher.UpdateMode = true;
+            }
+
+            _context.SaveChanges();
+        }
+
+        public void ResetTeacherCredit()
+        {
+            var teachersAssigns=_context.TeacherAssigns.Where(x => x.IsActive == true).ToList();
+            foreach (var assign in teachersAssigns)
+            {
+                var teacher=_context.Teachers.FirstOrDefault(x => x.Id == assign.TeacherId);
+                if (teacher != null)
+                {
+                    teacher.CreditTaken = Zero;
+                    teacher.EditMode = true;
+                    _context.SaveChanges();
+                }
             }
         }
     }

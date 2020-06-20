@@ -44,6 +44,19 @@ namespace EastDeltaUniversity.Controllers
             return RedirectToAction("Create");
         }
 
+        [HttpGet]
+        public ActionResult Unassign()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        public ActionResult UnassignCourses()
+        {
+            _courseManager.Unassign();
+            return RedirectToAction("Index", "Course");
+        }
+
 
         //JSON Results
 

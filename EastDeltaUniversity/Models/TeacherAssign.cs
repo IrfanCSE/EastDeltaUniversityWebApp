@@ -33,6 +33,9 @@ namespace EastDeltaUniversity.Models
         [NotMapped]
         public int Credit { get; set; }
 
+        [NotMapped]
+        public bool UpdateMode { get; set; }
+
     }
 
     public partial class TeacherAssign:IValidatableObject
@@ -40,6 +43,12 @@ namespace EastDeltaUniversity.Models
         public IEnumerable<ValidationResult> Validate(ValidationContext validationContext)
         {
             var results= new List<ValidationResult>();
+
+            if (UpdateMode==true)
+            {
+                return results;
+            }
+
             ApplicationDbContext _context = new ApplicationDbContext();
 
             var course = _context.TeacherAssigns.FirstOrDefault(x => x.CourseId == CourseId && x.IsActive == true);

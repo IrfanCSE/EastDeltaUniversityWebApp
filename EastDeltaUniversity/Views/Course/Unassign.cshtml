@@ -1,0 +1,27 @@
+﻿
+@{
+    ViewBag.Title = "Unassign";
+}
+
+<h2>Unassign</h2>
+
+@using (Html.BeginForm("UnassignCourses","Course",FormMethod.Post))
+{
+    <input id="Unassign-Click" type="submit" value="Unassign Courses" class="btn btn-danger"/>
+}
+
+@section scripts
+{
+    <script>
+        $(function() {
+
+            $("#Unassign-Click").click(function() {
+                var result = confirm("Are You Sure To Unassign All Courses ?");
+                if (result == false) {
+                    return false;
+                }
+            });
+
+        });
+    </script>
+}
