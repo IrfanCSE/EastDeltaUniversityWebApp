@@ -12,8 +12,8 @@
 </p>
 
 <div class="form-group">
-    @Html.LabelFor(x => x.DepartmentId,new{@class="col-md-2"})
-    <div class="col-md-10">
+    @Html.LabelFor(x => x.DepartmentId,new{@class="col-md-offset-5"})
+    <div class="col-md-offset-4">
         @Html.DropDownListFor(x => x.DepartmentId, new SelectList(ViewBag.DepartmentId, "Id", "Code"), "--Select Department--", new { @class = "form-control" })
     </div>
 </div>
@@ -26,16 +26,16 @@
     <table id="CourseDataTable" class="table table-bordered table-striped table-hover">
         <thead>
             <tr>
-                <th class="text-center">
+                <th class="text-center col-md-2">
                     @Html.LabelFor(x => x.Code)
                 </th>
-                <th class="text-center">
+                <th class="text-center col-md-3">
                     @Html.LabelFor(x => x.Name)
                 </th>
-                <th class="text-center">
+                <th class="text-center col-md-3">
                     @Html.LabelFor(x => x.SemesterName)
                 </th>
-                <th class="text-center">
+                <th class="text-center col-md-4">
                     @Html.LabelFor(x => x.TeacherName)
                 </th>
             </tr>
@@ -75,7 +75,7 @@
 
             //DataTable Call
 
-            $("#CourseDataTable").DataTable();
+            //$("#CourseDataTable").DataTable();
 
         });
     </script>

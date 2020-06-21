@@ -4,14 +4,14 @@
     ViewBag.Title = "Grading";
 }
 
-<h2>Grading</h2>
+<h2>Grade</h2>
 
 @using (Html.BeginForm())
 {
     @Html.AntiForgeryToken()
 
 <div class="form-horizontal">
-    <h4>Grading Student</h4>
+    <h4>Student</h4>
     <hr />
     @Html.ValidationSummary(true, "", new { @class = "text-danger" })
     <div class="form-group">
