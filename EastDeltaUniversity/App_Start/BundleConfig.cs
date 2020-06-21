@@ -17,14 +17,17 @@ namespace EastDeltaUniversity
             // Use the development version of Modernizr to develop with and learn from. Then, when you're
             // ready for production, use the build tool at http://modernizr.com to pick only the tests you need.
             bundles.Add(new ScriptBundle("~/bundles/modernizr").Include(
-                        "~/Scripts/modernizr-*"));
+                        "~/Scripts/modernizr-*",
+                        "~/Scripts/jquery-ui.min.js"));
 
             bundles.Add(new ScriptBundle("~/bundles/bootstrap").Include(
                       "~/Scripts/bootstrap.js",
                       "~/Scripts/respond.js",
                       "~/Scripts/dataTables.bootstrap.min.js",
                       "~/Scripts/bootstrap-timepicker.js",
-                      "~/Scripts/bootstrap-datepicker.js"));
+                      "~/Scripts/bootstrap-datepicker.js",
+                      "~/Scripts/responsee.js",
+                      "~/Scripts/template-scripts.js"));
 
             bundles.Add(new StyleBundle("~/Content/css").Include(
                       "~/Content/bootstrap.css",
@@ -32,7 +35,7 @@ namespace EastDeltaUniversity
                       "~/Content/site.css",
                       "~/Content/bootstrap.timepicker.css",
                       "~/Content/bootstrap-datepicker.css"
-                      ));
+            ));
         }
     }
 }

@@ -6,7 +6,6 @@
     <title>@ViewBag.Title - My ASP.NET Application</title>
     @Styles.Render("~/Content/css")
     @Scripts.Render("~/bundles/modernizr")
-
 </head>
 <body>
     <div class="navbar navbar-inverse navbar-fixed-top">
@@ -24,18 +23,76 @@
                     <li>@Html.ActionLink("Home", "Index", "Home")</li>
                     <li>@Html.ActionLink("About", "About", "Home")</li>
                     <li>@Html.ActionLink("Contact", "Contact", "Home")</li>
+
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Department<span class="caret"></span></a>
+                        <ul class="dropdown-menu">
+                            <li>@Html.ActionLink("Index", "Index", "Department")</li>
+                            <li role="separator" class="divider"></li>
+                            <li class="dropdown-header">Admin Panel</li>
+                            <li>@Html.ActionLink("New", "Create", "Department")</li>
+                        </ul>
+                    </li>
+
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Course<span class="caret"></span></a>
+                        <ul class="dropdown-menu">
+                            <li>@Html.ActionLink("Index", "Index", "Course")</li>
+                            <li role="separator" class="divider"></li>
+                            <li class="dropdown-header">Admin Panel</li>
+                            <li>@Html.ActionLink("Un-Assign", "Unassign", "Course")</li>
+                            <li>@Html.ActionLink("New", "Create", "Course")</li>
+                        </ul>
+                    </li>
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Class<span class="caret"></span></a>
+                        <ul class="dropdown-menu">
+                            <li>@Html.ActionLink("Index", "Index", "Class")</li>
+                            <li role="separator" class="divider"></li>
+                            <li class="dropdown-header">Admin Panel</li>
+                            <li>@Html.ActionLink("Allocate", "Allocate", "Class")</li>
+                            <li>@Html.ActionLink("Un-Assign", "Unassign", "Class")</li>
+                        </ul>
+                    </li>
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Teacher<span class="caret"></span></a>
+                        <ul class="dropdown-menu">
+                            <li>@Html.ActionLink("Assign", "Assign", "Teacher")</li>
+                            <li role="separator" class="divider"></li>
+                            <li class="dropdown-header">Admin Panel</li>
+                            <li>@Html.ActionLink("New", "Create", "Teacher")</li>
+                        </ul>
+                    </li>
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Student<span class="caret"></span></a>
+                        <ul class="dropdown-menu">
+                            <li>@Html.ActionLink("Result", "ViewGrade", "Student")</li>
+                            <li role="separator" class="divider"></li>
+                            <li class="dropdown-header">Admin Panel</li>
+                            <li>@Html.ActionLink("Registration", "Registration", "Student")</li>
+                            <li>@Html.ActionLink("Enroll", "Enroll", "Student")</li>
+                            <li>@Html.ActionLink("Grade", "Grading", "Student")</li>
+                        </ul>
+                    </li>
+
                 </ul>
                 @Html.Partial("_LoginPartial")
             </div>
         </div>
     </div>
+
     <div class="container body-content">
         @RenderBody()
         <hr />
+    </div>
+
+    <div class="container body-content">
         <footer>
-            <p>&copy; @DateTime.Now.Year - My ASP.NET Application</p>
+            <p>&copy; @DateTime.Now.Year - University Management System</p>
+            <p>Irfanul Hasan - 182000422e@eastdelta.edu.bd</p>
         </footer>
     </div>
+
 
     @Scripts.Render("~/bundles/jquery")
     @Scripts.Render("~/bundles/bootstrap")

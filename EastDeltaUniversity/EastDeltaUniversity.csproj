@@ -335,10 +335,16 @@
     <Content Include="Content\bootstrap-timepicker.min.css" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
+    <Content Include="Content\components.css" />
     <Content Include="Content\darkly.bootstrap.css" />
     <Content Include="Content\dataTables.bootstrap.min.css" />
+    <Content Include="Content\font\mfglabsiconset-webfont.svg" />
+    <Content Include="Content\font\Simple-Line-Icons.svg" />
+    <Content Include="Content\icons.css" />
     <Content Include="Content\Images\EduLogo.jpg" />
     <Content Include="Content\lumen.bootstrap.css" />
+    <Content Include="Content\responsee.css" />
+    <Content Include="Content\template-style.css" />
     <Content Include="favicon.ico" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
@@ -374,6 +380,12 @@
     <Content Include="Content\bootstrap-datepicker.standalone.css.map" />
     <Content Include="Content\bootstrap-datepicker3.css.map" />
     <Content Include="Content\bootstrap-datepicker3.standalone.css.map" />
+    <Content Include="Content\font\mfglabsiconset-webfont.eot" />
+    <Content Include="Content\font\mfglabsiconset-webfont.ttf" />
+    <Content Include="Content\font\mfglabsiconset-webfont.woff" />
+    <Content Include="Content\font\Simple-Line-Icons.eot" />
+    <Content Include="Content\font\Simple-Line-Icons.ttf" />
+    <Content Include="Content\font\Simple-Line-Icons.woff" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\dataTables.bootstrap.min.js" />
     <None Include="Scripts\jquery-3.5.1.intellisense.js" />
@@ -383,6 +395,7 @@
     <Content Include="Scripts\jquery-3.5.1.slim.min.js" />
     <Content Include="Scripts\jquery-3.5.1.slim.min.map" />
     <Content Include="Scripts\jquery-3.5.1.min.map" />
+    <Content Include="Scripts\jquery-ui.min.js" />
     <Content Include="Scripts\jquery.dataTables.min.js" />
     <None Include="Scripts\jquery.validate-vsdoc.js" />
     <Content Include="Scripts\jquery.validate.js" />
@@ -398,6 +411,7 @@
     <Content Include="Scripts\respond.matchmedia.addListener.js" />
     <Content Include="Scripts\respond.matchmedia.addListener.min.js" />
     <Content Include="Scripts\respond.min.js" />
+    <Content Include="Scripts\responsee.js" />
     <Content Include="Scripts\src\index.js" />
     <Content Include="Scripts\src\methods\defaults.js" />
     <Content Include="Scripts\src\methods\destroy.js" />
@@ -461,6 +475,7 @@
     <Content Include="Scripts\src\utils\setAttributes.js" />
     <Content Include="Scripts\src\utils\setStyles.js" />
     <Content Include="Scripts\src\utils\setupEventListeners.js" />
+    <Content Include="Scripts\template-scripts.js" />
     <Content Include="Scripts\umd\popper-utils.js" />
     <Content Include="Scripts\umd\popper-utils.min.js" />
     <Content Include="Scripts\umd\popper.js" />
