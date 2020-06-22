@@ -342,6 +342,9 @@
     <Content Include="Content\font\Simple-Line-Icons.svg" />
     <Content Include="Content\icons.css" />
     <Content Include="Content\Images\EduLogo.jpg" />
+    <Content Include="Content\Images\edu_1.jpg" />
+    <Content Include="Content\Images\edu_2.jpg" />
+    <Content Include="Content\Images\edu_3.jpg" />
     <Content Include="Content\lumen.bootstrap.css" />
     <Content Include="Content\responsee.css" />
     <Content Include="Content\template-style.css" />

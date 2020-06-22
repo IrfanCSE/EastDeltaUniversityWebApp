@@ -46,8 +46,8 @@ namespace EastDeltaUniversity.Models.ViewModels
                 return result;
             }
 
-            var student = _context.StudentCourses.Where(x =>
-                x.StudentId == StudentId && x.CourseId == CourseId && x.IsActive == true);
+            var student = _context.StudentCourses.FirstOrDefault(x=>
+                x.IsActive==true && x.StudentId==StudentId && x.CourseId==CourseId);
 
             if (student != null)
             {

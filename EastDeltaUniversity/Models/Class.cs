@@ -68,7 +68,7 @@ namespace EastDeltaUniversity.Models
             FromTime = FTime.TimeOfDay;
             ToTime = TTime.TimeOfDay;
 
-            var course = _context.Classes.FirstOrDefault(x => x.DayId == DayId && x.CourseId == CourseId);
+            var course = _context.Classes.FirstOrDefault(x => x.IsActive==true && x.DayId == DayId && x.CourseId == CourseId);
             if (course != null)
             {
                 result.Add(new ValidationResult("Course Assigned This Day",new []{ "CourseId" }));
@@ -79,7 +79,7 @@ namespace EastDeltaUniversity.Models
                 result.Add(new ValidationResult("Invalid Time Selection",new []{ "FTime", "TTime" }));
             }
 
-            var classList=_context.Classes.Where(x => x.DayId == DayId && x.RoomId == RoomId).ToList();
+            var classList=_context.Classes.Where(x => x.IsActive==true && x.DayId == DayId && x.RoomId == RoomId).ToList();
             foreach (var dbClass in classList)
             {
                 if ((dbClass.FromTime==FromTime && dbClass.ToTime==ToTime) || 
