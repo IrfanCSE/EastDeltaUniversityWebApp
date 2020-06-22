@@ -22,7 +22,7 @@ namespace EastDeltaUniversity.Gateway
 
         public List<Room> GetRooms()
         {
-            return _context.Rooms.ToList();
+            return _context.Rooms.OrderBy(x=>x.Name).ToList();
         }
 
         public List<Day> GetDays()
@@ -81,6 +81,34 @@ namespace EastDeltaUniversity.Gateway
                 cClass.UpdateMode = true;
                 _context.SaveChanges();
             }
+        }
+
+        public void RoomSave(Room room)
+        {
+            if (room.Id != 0)
+            {
+                var roomInfo = _context.Rooms.FirstOrDefault(x => x.Id == room.Id);
+                roomInfo.Name = room.Name;
+                roomInfo.EditMode = true;
+                _context.SaveChanges();
+            }
+            else
+            {
+                _context.Rooms.Add(room);
+                _context.SaveChanges();
+            }
+        }
+
+        public Room GetRoomById(int? id)
+        {
+            return _context.Rooms.FirstOrDefault(x => x.Id == id);
+        }
+
+        public void RoomDelete(int id)
+        {
+            var room=_context.Rooms.FirstOrDefault(x => x.Id == id);
+            _context.Rooms.Remove(room);
+            _context.SaveChanges();
         }
 
 

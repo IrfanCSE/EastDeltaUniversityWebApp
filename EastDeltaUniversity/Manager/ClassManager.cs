@@ -43,6 +43,21 @@ namespace EastDeltaUniversity.Manager
             _classGateway.Unassign();
         }
 
+        public void RoomSave(Room room)
+        {
+            _classGateway.RoomSave(room);
+        }
+
+        public Room GetRoomById(int? id)
+        {
+            return _classGateway.GetRoomById(id);
+        }
+
+        public void RoomDelete(int id)
+        {
+            _classGateway.RoomDelete(id);
+        }
+
 
     }
 }

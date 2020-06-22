@@ -1,0 +1,48 @@
+﻿@model IEnumerable<EastDeltaUniversity.Models.Room>
+
+@{
+    ViewBag.Title = "Room";
+}
+
+<h2>Room</h2>
+
+<p>
+    @Html.ActionLink("Create New", "RoomCreate")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Name)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Name)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "RoomEdit", new { id=item.Id }) |
+            @Html.ActionLink("Delete", "RoomDelete", new { id=item.Id },new{onclick= "return ConfirmDelete()" })
+        </td>
+    </tr>
+}
+
+</table>
+
+@section scripts
+{
+    <script>
+
+        function ConfirmDelete() {
+            var result = confirm("Ary You Sure To Delete?");
+            if (result) {
+                return true;
+            }
+
+            return false;
+        };
+
+    </script>
+}

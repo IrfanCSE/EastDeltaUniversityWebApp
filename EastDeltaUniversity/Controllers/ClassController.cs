@@ -71,6 +71,50 @@ namespace EastDeltaUniversity.Controllers
             return RedirectToAction("Index", "Class");
         }
 
+        [HttpGet]
+        public ActionResult Room()
+        {
+            var rooms=_classManager.GetRooms();
+            return View(rooms);
+        }
+
+        [HttpGet]
+        public ActionResult RoomCreate(int? id)
+        {
+            if (id != null)
+            {
+            var room = _classManager.GetRoomById(id);
+            room.EditMode = true;
+            return View(room);
+            }
+            return View();
+        }
+
+        [HttpPost]
+        public ActionResult RoomCreate(Room room)
+        {
+            if (!ModelState.IsValid)
+            {
+                return View("RoomCreate", room);
+            }
+            _classManager.RoomSave(room);
+            return RedirectToAction("RoomCreate", "Class");
+        }
+
+        public ActionResult RoomEdit(int id)
+        {
+            return RedirectToAction("RoomCreate", "Class",new {id=id});
+        }
+
+        public ActionResult RoomDelete(int id)
+        {
+            _classManager.RoomDelete(id);
+            return RedirectToAction("Room", "Class");
+        }
+
+
+
+
 
         //JSON Result
 

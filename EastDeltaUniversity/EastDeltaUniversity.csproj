@@ -543,6 +543,8 @@
     <Content Include="Views\Student\ViewGrade.cshtml" />
     <Content Include="Views\Course\Unassign.cshtml" />
     <Content Include="Views\Class\Unassign.cshtml" />
+    <Content Include="Views\Class\Room.cshtml" />
+    <Content Include="Views\Class\RoomCreate.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
